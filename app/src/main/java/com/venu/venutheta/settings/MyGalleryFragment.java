@@ -169,7 +169,7 @@ public class MyGalleryFragment extends Fragment implements BaseQuickAdapter.Requ
         mFollowersCount.setText(String.valueOf(ParseUser.getCurrentUser().getInt("followers")));
         mFollowingCount.setText(String.valueOf(ParseUser.getCurrentUser().getInt("following")));
         mEventsCount.setText(String.valueOf(ParseUser.getCurrentUser().getInt("peeps")));
-        mPeepCount.setText(String.valueOf(ParseUser.getCurrentUser().getInt("events")));
+        mPeepCount.setText(String.valueOf(ParseUser.getCurrentUser().getInt(GlobalConstants.CLASS_EVENT)));
 
         Glide.with(getActivity())
                 .load(ParseUser.getCurrentUser().getString("avatar"))

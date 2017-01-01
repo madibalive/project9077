@@ -34,7 +34,7 @@ public class LoaderMainFragment {
                 List<ParseObject> mDatas = new ArrayList<>();
                 ParseObject me;
 
-                ParseQuery<ParseObject> followersQuery = ParseQuery.getQuery("FollowVersion3");
+                ParseQuery<ParseObject> followersQuery = ParseQuery.getQuery(GlobalConstants.CLASS_FOLLOW);
                 followersQuery.whereEqualTo("to", ParseUser.getCurrentUser());
 
                 ParseQuery<ParseObject> challangeQueryMe = ParseQuery.getQuery("Peep");
@@ -54,7 +54,7 @@ public class LoaderMainFragment {
 
                 } else {
 
-                    query = ParseQuery.getQuery("Gossip");
+                    query = ParseQuery.getQuery(GlobalConstants.CLASS_GOSSIP);
                     query.whereMatchesKeyInQuery(GlobalConstants.OBJ_FROM, GlobalConstants.OBJ_FROM, followersQuery);
                     query.whereStartsWith(GlobalConstants.STRING_HASHTAG, "venuchallange");
                     query.setLimit(20);
@@ -140,19 +140,19 @@ public class LoaderMainFragment {
 
                 Date tomorrow = cal.getTime();
 
-                ParseQuery<ParseObject> queryEvents= ParseQuery.getQuery("Events");
+                ParseQuery<ParseObject> queryEvents= ParseQuery.getQuery(GlobalConstants.CLASS_EVENT);
                 queryEvents.orderByAscending("createdAt");
                 queryEvents.setLimit(10);
                 queryEvents.whereGreaterThanOrEqualTo("createdAt", today);
                 queryEvents.whereLessThan("createdAt", tomorrow);
 
-                ParseQuery<ParseObject> queryGossip= ParseQuery.getQuery("Gossip");
+                ParseQuery<ParseObject> queryGossip= ParseQuery.getQuery(GlobalConstants.CLASS_GOSSIP);
                 queryGossip.orderByAscending("createdAt");
                 queryGossip.orderByDescending("reaction");
                 queryGossip.whereLessThanOrEqualTo("expiry",today);
                 queryGossip.setLimit(6);
 
-                ParseQuery<ParseObject> queryTopEvents= ParseQuery.getQuery("Events");
+                ParseQuery<ParseObject> queryTopEvents= ParseQuery.getQuery(GlobalConstants.CLASS_EVENT);
                 queryTopEvents.orderByDescending("venuBonus");
                 queryTopEvents.setLimit(10);
 

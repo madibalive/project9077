@@ -42,7 +42,7 @@ public class LoaderGeneral {
         return Observable.create(new Observable.OnSubscribe<List<ParseObject>>() {
             @Override
             public void call(Subscriber<? super List<ParseObject>> subscriber) {
-                ParseQuery<ParseObject> query = ParseQuery.getQuery("Activities");
+                ParseQuery<ParseObject> query = ParseQuery.getQuery(GlobalConstants.CLASS_NOTIFICATION);
 
 
                 query.orderByAscending("Created");
@@ -103,7 +103,7 @@ public class LoaderGeneral {
             public void call(Subscriber<? super List<ParseObject>> subscriber) {
 
                 // Init query
-                ParseQuery<ParseObject> query = ParseQuery.getQuery("PendingIvites");
+                ParseQuery<ParseObject> query = ParseQuery.getQuery(GlobalConstants.CLASS_PENDING);
                 query.whereStartsWith("phone", ParseUser.getCurrentUser().getString("phone"));
                 query.orderByAscending("createdAt");
                 try {
@@ -131,7 +131,7 @@ public class LoaderGeneral {
                 else
                     term = "from";
 
-                ParseQuery<ParseObject> query = ParseQuery.getQuery("FollowVersion3");
+                ParseQuery<ParseObject> query = ParseQuery.getQuery(GlobalConstants.CLASS_FOLLOW);
                 query.whereExists("from");
                 query.include("from");
 
@@ -162,7 +162,7 @@ public class LoaderGeneral {
             @Override
             public void call(Subscriber<? super List<ParseObject>> subscriber) {
 
-                ParseQuery<ParseObject> query = ParseQuery.getQuery("Activities");
+                ParseQuery<ParseObject> query = ParseQuery.getQuery(GlobalConstants.CLASS_NOTIFICATION);
                 query.whereEqualTo("to", ParseUser.getCurrentUser());
                 query.include("from");
                 query.orderByAscending("Created");
@@ -217,7 +217,7 @@ public class LoaderGeneral {
 
 
                 // creat all queries heres
-                ParseQuery<ParseObject> queryEvents= ParseQuery.getQuery("Events");
+                ParseQuery<ParseObject> queryEvents= ParseQuery.getQuery(GlobalConstants.CLASS_EVENT);
                 queryEvents.orderByAscending("createdAt");
                 queryEvents.setLimit(20);
 
@@ -225,11 +225,11 @@ public class LoaderGeneral {
                 queryPeople.orderByAscending("createdAt");
                 queryPeople.setLimit(20);
 
-                ParseQuery<ParseObject> queryMedia= ParseQuery.getQuery("Events");
+                ParseQuery<ParseObject> queryMedia= ParseQuery.getQuery(GlobalConstants.CLASS_EVENT);
                 queryMedia.orderByAscending("createdAt");
                 queryMedia.setLimit(20);
 
-                ParseQuery<ParseObject> queryGossip= ParseQuery.getQuery("Gossip");
+                ParseQuery<ParseObject> queryGossip= ParseQuery.getQuery(GlobalConstants.CLASS_GOSSIP);
                 queryGossip.orderByAscending("createdAt");
                 queryGossip.setLimit(20);
 
@@ -280,7 +280,7 @@ public class LoaderGeneral {
             public void call(Subscriber<? super List<ParseObject>> subscriber) {
 
                 // Init query
-                ParseQuery<ParseObject> query = ParseQuery.getQuery("CommentV2");
+                ParseQuery<ParseObject> query = ParseQuery.getQuery(GlobalConstants.CLASS_COMMENT);
                 query.whereEqualTo("to", ParseObject.createWithoutData(className,id));
                 query.include("from");
                 query.orderByAscending("createdAt");
@@ -304,7 +304,7 @@ public class LoaderGeneral {
             public void call(Subscriber<? super List<ParseObject>> subscriber) {
 
                 // Init query
-                ParseQuery<ParseObject> query = ParseQuery.getQuery("CommentV2");
+                ParseQuery<ParseObject> query = ParseQuery.getQuery(GlobalConstants.CLASS_COMMENT);
                 query.whereEqualTo("to", ParseObject.createWithoutData(className,id));
                 query.include("from");
                 query.orderByAscending("createdAt");
@@ -325,7 +325,7 @@ public class LoaderGeneral {
             @Override
             public void call(Subscriber<? super Map<String,String>> subscriber) {
 
-                ParseQuery<ParseObject> query = ParseQuery.getQuery("FollowVersion3");
+                ParseQuery<ParseObject> query = ParseQuery.getQuery(GlobalConstants.CLASS_FOLLOW);
                 query.whereExists("from");
                 query.include("from");
                 query.whereEqualTo("to", ParseUser.getCurrentUser());
@@ -373,7 +373,7 @@ public class LoaderGeneral {
             public void call(Subscriber<? super List<ParseObject>> subscriber) {
 
                 // Init query
-                ParseQuery<ParseObject> query = ParseQuery.getQuery("Gossip");
+                ParseQuery<ParseObject> query = ParseQuery.getQuery(GlobalConstants.CLASS_GOSSIP);
                 query.whereEqualTo("from", ParseUser.getCurrentUser());
                 query.orderByAscending("createdAt");
                 query.setLimit(20);
@@ -427,7 +427,7 @@ public class LoaderGeneral {
             public void call(Subscriber<? super List<ParseObject>> subscriber) {
 
                 // Init query
-                ParseQuery<ParseObject> query = ParseQuery.getQuery("Media");
+                ParseQuery<ParseObject> query = ParseQuery.getQuery(GlobalConstants.CLASS_MEDIA);
                 query.whereEqualTo("from", ParseUser.getCurrentUser());
                 query.orderByAscending("createdAt");
                 query.setLimit(20);
@@ -456,7 +456,7 @@ public class LoaderGeneral {
                 try {
                     List<ParseUser> foundUsers = syncQuery.find();
                     //remove from following
-                    ParseQuery<ParseObject> query = ParseQuery.getQuery("FollowVersion3");
+                    ParseQuery<ParseObject> query = ParseQuery.getQuery(GlobalConstants.CLASS_FOLLOW);
                     query.whereExists("from");
                     query.include("to");
                     query.whereEqualTo("from", ParseUser.getCurrentUser());
@@ -546,7 +546,7 @@ public class LoaderGeneral {
             try {
                 getAll(context,alContacts,phoneNumbers);
 
-                ParseQuery<ParseObject> query = ParseQuery.getQuery("FollowVersion3");
+                ParseQuery<ParseObject> query = ParseQuery.getQuery(GlobalConstants.CLASS_FOLLOW);
                 query.whereExists("from");
                 query.whereEqualTo("from", ParseUser.getCurrentUser());
 

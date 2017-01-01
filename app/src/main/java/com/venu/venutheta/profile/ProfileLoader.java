@@ -3,6 +3,7 @@ package com.venu.venutheta.profile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
+import com.venu.venutheta.models.GlobalConstants;
 
 import java.util.Date;
 import java.util.List;
@@ -24,7 +25,7 @@ public class ProfileLoader {
             @Override
             public void call(Subscriber<? super List<ParseObject>> subscriber) {
 
-                ParseQuery<ParseObject> query = ParseQuery.getQuery("Activities");
+                ParseQuery<ParseObject> query = ParseQuery.getQuery(GlobalConstants.CLASS_NOTIFICATION);
                 query.whereEqualTo("to", ParseUser.createWithoutData(ParseUser.class,id));
                 query.orderByAscending("Created");
                 query.setLimit(30);
@@ -49,7 +50,7 @@ public class ProfileLoader {
             @Override
             public void call(Subscriber<? super List<ParseObject>> subscriber) {
 
-                ParseQuery<ParseObject> query = ParseQuery.getQuery("Activities");
+                ParseQuery<ParseObject> query = ParseQuery.getQuery(GlobalConstants.CLASS_NOTIFICATION);
                 query.whereEqualTo("to", ParseUser.createWithoutData(ParseUser.class,id));
                 query.orderByAscending("Created");
                 query.setLimit(30);

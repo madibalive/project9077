@@ -164,8 +164,8 @@ public class NotificationFragment extends Fragment implements SwipeRefreshLayout
                                     mCurrentCounter = mAdapter.getData().size();
                                 }
                                 mCurrentCounter = mAdapter.getData().size();
-                                ParseObject.unpinAllInBackground("notifications", e1 -> {
-                                    ParseObject.pinAllInBackground("notifications", value);
+                                ParseObject.unpinAllInBackground(GlobalConstants.CLASS_NOTIFICATION, e1 -> {
+                                    ParseObject.pinAllInBackground(GlobalConstants.CLASS_NOTIFICATION, value);
                                 });
                             }, 500);
 

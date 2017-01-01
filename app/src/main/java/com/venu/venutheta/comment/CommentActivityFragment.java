@@ -27,12 +27,11 @@ import com.bumptech.glide.Priority;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
-import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
-import com.parse.SaveCallback;
 import com.venu.venutheta.R;
+import com.venu.venutheta.models.GlobalConstants;
 import com.venu.venutheta.services.LoaderGeneral;
 
 import java.util.ArrayList;
@@ -145,24 +144,21 @@ public class CommentActivityFragment extends BottomSheetDialogFragment {
     private void sendComment(final String message) {
         mSend.setEnabled(false);
 
-        final ParseObject comment = new ParseObject("CommentV2");
+        final ParseObject comment = new ParseObject(GlobalConstants.CLASS_COMMENT);
         comment.put("from", ParseUser.getCurrentUser());
         comment.put("fromId", ParseUser.getCurrentUser().getObjectId());
         comment.put("message", message);
         comment.put("to", toObject);
         comment.put("toId", toObject.getObjectId());
-        comment.saveInBackground(new SaveCallback() {
-            @Override
-            public void done(ParseException e) {
-                mSend.setEnabled(true);
-                if (e == null) {
-                    mMesssage.setText("");
-                    mAdapter.add(mAdapter.getData().size(), comment);
-                    mAdapter.notifyItemInserted(mAdapter.getData().size());
+        comment.saveInBackground(e -> {
+            mSend.setEnabled(true);
+            if (e == null) {
+                mMesssage.setText("");
+                mAdapter.add(mAdapter.getData().size(), comment);
+                mAdapter.notifyItemInserted(mAdapter.getData().size());
 
-                } else
-                    Log.i(TAG, "done: err" + e.getMessage());
-            }
+            } else
+                Log.i(TAG, "done: err" + e.getMessage());
         });
     }
 

@@ -32,6 +32,7 @@ import com.parse.ParseUser;
 import com.parse.SaveCallback;
 import com.parse.SignUpCallback;
 import com.venu.venutheta.R;
+import com.venu.venutheta.models.GlobalConstants;
 import com.venu.venutheta.ui.StateButton;
 import com.venu.venutheta.utils.NetUtils;
 
@@ -263,7 +264,7 @@ public class SignUpActivity extends AppCompatActivity {
         installation.put("user_id", ParseUser.getCurrentUser().getObjectId());
         installation.saveInBackground();
 
-        ParseObject userRelations = new ParseObject("UserRelations");
+        ParseObject userRelations = new ParseObject(GlobalConstants.CLASS_USER_RELATION);
         userRelations.put("user", ParseUser.getCurrentUser());
         userRelations.saveInBackground();
 

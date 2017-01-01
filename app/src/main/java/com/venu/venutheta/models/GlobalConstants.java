@@ -57,13 +57,15 @@ public class GlobalConstants {
     //EventsVersion3
     public static final String CLASS_EVENT = "hashtag";
     public static final String CLASS_PEEP = "hashtag";
+    public static final String CLASS_FEED = "hashtag";
     public static final String CLASS_MEDIA = "hashtag";
-    public static final String CLASS_FOLLOWING = "hashtag";
-    public static final String CLASS_FOLLOWER = "hashtag";
+    public static final String CLASS_FOLLOW = "hashtag";
     public static final String CLASS_REQUEST = "hashtag";
     public static final String CLASS_SHARE = "hashtag";
     public static final String CLASS_PENDING = "hashtag";
+    public static final String CLASS_COMMENT = "hashtag";
     public static final String CLASS_GOSSIP = "hashtag";
+    public static final String CLASS_GOING = "hashtag";
     public static final String CLASS_USER_RELATION = "hashtag";
     public static final String CLASS_NOTIFICATION = "NotificationVersion3";
 

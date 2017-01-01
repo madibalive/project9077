@@ -224,7 +224,7 @@ public class UploadService extends IntentService {
                     event.put("isVideo", 2);
                     event.save();
 
-                    ParseObject shareObject = new ParseObject("ShareVersion3");
+                    ParseObject shareObject = new ParseObject(GlobalConstants.CLASS_SHARE);
                     shareObject.put("from", ParseUser.getCurrentUser());
                     shareObject.put("fromID", ParseUser.getCurrentUser().getObjectId());
                     shareObject.put(GlobalConstants.MEDIA_OBJECT, event);
@@ -232,7 +232,7 @@ public class UploadService extends IntentService {
                     shareObject.put(GlobalConstants.MEDIA_TYPE ,3);
                     shareObject.save();
 
-                    ParseObject feed =new ParseObject("Feed");
+                    ParseObject feed =new ParseObject(GlobalConstants.CLASS_FEED);
                     feed.put("from", ParseUser.getCurrentUser());
                     feed.put("fromId", ParseUser.getCurrentUser().getObjectId());
                     feed.put(GlobalConstants.FEED_TYPE, GlobalConstants.FEED_TYPE_SHARE);
@@ -305,7 +305,7 @@ public class UploadService extends IntentService {
                         event.put("isVideo", 1);
                         event.save();
 
-                        ParseObject shareObject = new ParseObject("ShareVersion3");
+                        ParseObject shareObject = new ParseObject(GlobalConstants.CLASS_SHARE);
                         shareObject.put("from", ParseUser.getCurrentUser());
                         shareObject.put("fromID", ParseUser.getCurrentUser().getObjectId());
                         shareObject.put(GlobalConstants.MEDIA_OBJECT, event);
@@ -313,7 +313,7 @@ public class UploadService extends IntentService {
                         shareObject.put(GlobalConstants.MEDIA_TYPE, 3);
                         shareObject.save();
 
-                        ParseObject feed =new ParseObject("Feed");
+                        ParseObject feed =new ParseObject(GlobalConstants.CLASS_FEED);
                         feed.put("from", ParseUser.getCurrentUser());
                         feed.put("fromId", ParseUser.getCurrentUser().getObjectId());
                         feed.put(GlobalConstants.FEED_TYPE, GlobalConstants.FEED_TYPE_SHARE);
@@ -408,7 +408,7 @@ public class UploadService extends IntentService {
                 media.put(GlobalConstants.MEDIA_TYPE,1);
                 media.save();
 
-                ParseObject feed =new ParseObject("Feed");
+                ParseObject feed =new ParseObject(GlobalConstants.CLASS_FEED);
                 feed.put("from", ParseUser.getCurrentUser());
                 feed.put("fromId", ParseUser.getCurrentUser().getObjectId());
                 feed.put(GlobalConstants.FEED_TYPE, GlobalConstants.FEED_TYPE_MEDIA);
@@ -499,7 +499,7 @@ public class UploadService extends IntentService {
                     media.put(GlobalConstants.MEDIA_TYPE,0);
                     media.save();
 
-                    ParseObject feed =new ParseObject("Feed");
+                    ParseObject feed =new ParseObject(GlobalConstants.CLASS_FEED);
                     feed.put("from", ParseUser.getCurrentUser());
                     feed.put("fromId", ParseUser.getCurrentUser().getObjectId());
                     feed.put(GlobalConstants.FEED_TYPE, GlobalConstants.FEED_TYPE_MEDIA);
@@ -550,7 +550,7 @@ public class UploadService extends IntentService {
         Channel channel = ChannelService.getInstance(getApplicationContext()).createChannel(channelInfo); //Thread or Async task
         if(channel != null){
             Timber.i(new StringBuilder().append("channelKey").append(channel.getKey()).toString());
-            ParseObject gossip =new ParseObject("Gossip");
+            ParseObject gossip =new ParseObject(GlobalConstants.CLASS_GOSSIP);
             gossip.put("title", title);
             gossip.put("shares",0);
             gossip.put("likes",0);
@@ -561,7 +561,7 @@ public class UploadService extends IntentService {
             try {
                 gossip.save();
 
-                ParseObject feed =new ParseObject("Feed");
+                ParseObject feed =new ParseObject(GlobalConstants.CLASS_FEED);
                 feed.put("from", ParseUser.getCurrentUser());
                 feed.put("fromId", ParseUser.getCurrentUser().getObjectId());
                 feed.put(GlobalConstants.FEED_TYPE, GlobalConstants.FEED_TYPE_GOSSIP);
@@ -612,7 +612,7 @@ public class UploadService extends IntentService {
 
     private void onCreateFeed(){
 
-        ParseObject feed =new ParseObject("Feed");
+        ParseObject feed =new ParseObject(GlobalConstants.CLASS_FEED);
         feed.put("from", ParseUser.getCurrentUser());
         feed.put("fromId", ParseUser.getCurrentUser().getObjectId());
         feed.put(GlobalConstants.FEED_TYPE,1);

@@ -30,7 +30,7 @@ public class MediaRefreshLoader implements Callable<ParseObject> {
         obj.fetch();
 
         // check if following
-        ParseQuery queryR = ParseQuery.getQuery("UserRelations");
+        ParseQuery queryR = ParseQuery.getQuery(GlobalConstants.CLASS_USER_RELATION);
         queryR.whereEqualTo("user", ParseUser.getCurrentUser());
         ParseObject relation = queryR.getFirst();
         if (relation !=null){

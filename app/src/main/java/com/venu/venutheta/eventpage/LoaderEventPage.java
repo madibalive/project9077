@@ -5,6 +5,7 @@ import com.parse.ParseQuery;
 import com.parse.ParseRelation;
 import com.parse.ParseUser;
 import com.venu.venutheta.Actions.ActionMediaCheckIslike;
+import com.venu.venutheta.models.GlobalConstants;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -28,7 +29,7 @@ public class LoaderEventPage {
             public void call(Subscriber<? super List<ParseObject>> subscriber) {
 
                 // Init query
-                ParseQuery<ParseObject> query = ParseQuery.getQuery("CommentV2");
+                ParseQuery<ParseObject> query = ParseQuery.getQuery(GlobalConstants.CLASS_COMMENT);
                 query.whereEqualTo("to", ParseObject.createWithoutData(className,id));
                 query.include("from");
                 query.orderByAscending("createdAt");
@@ -56,7 +57,7 @@ public class LoaderEventPage {
                     ParseObject b = new ParseObject("");
 
                     // Init query
-                    ParseQuery<ParseObject> query = ParseQuery.getQuery("Media");
+                    ParseQuery<ParseObject> query = ParseQuery.getQuery(GlobalConstants.CLASS_MEDIA);
                     query.whereEqualTo("to", ParseObject.createWithoutData(className,id));
                     query.include("from");
                     query.setLimit(4);
@@ -66,7 +67,7 @@ public class LoaderEventPage {
                     data.add(a);data.add(b);
 
                     //check status and return fetch event
-                    ParseQuery queryR = ParseQuery.getQuery("UserRelations");
+                    ParseQuery queryR = ParseQuery.getQuery(GlobalConstants.CLASS_USER_RELATION);
                     queryR.whereEqualTo("user", ParseUser.getCurrentUser());
                     ParseObject relation = queryR.getFirst();
                     if (relation !=null){

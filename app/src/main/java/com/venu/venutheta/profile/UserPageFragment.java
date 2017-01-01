@@ -123,7 +123,7 @@ public class UserPageFragment extends Fragment {
         mFollowersCount.setText(String.valueOf(user.getInt("followers")));
         mFollowingCount.setText(String.valueOf(user.getInt("following")));
         mEventsCount.setText(String.valueOf(user.getInt("peeps")));
-        mPeepCount.setText(String.valueOf(user.getInt("events")));
+        mPeepCount.setText(String.valueOf(user.getInt(GlobalConstants.CLASS_EVENT)));
 
         Glide.with(getActivity())
                 .load(user.getString("avatar"))
@@ -168,7 +168,7 @@ public class UserPageFragment extends Fragment {
                 case 0:
                     return "Peeps";
                 case 1:
-                    return "Events";
+                    return GlobalConstants.CLASS_EVENT;
                 case 2:
                     return "Followers";
                 case 3:

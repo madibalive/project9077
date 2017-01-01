@@ -399,7 +399,7 @@ public class VideoPlayerFragment extends Fragment implements MediaPlayer.OnPrepa
 //            @Override
 //            public void liked(LikeButton likeButton) {
 //
-//                ParseObject shareObject= new ParseObject("Share");
+//                ParseObject shareObject= new ParseObject(GlobalConstants.CLASS_SHARE);
 //                shareObject.put("from", ParseUser.getCurrentUser());
 //                shareObject.put("fromID",ParseUser.getCurrentUser().getObjectId());
 //                shareObject.put("object",mCurrentObject);

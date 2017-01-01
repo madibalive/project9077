@@ -130,7 +130,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="2dp"
                         android:gravity="center"
-                        android:text="Events"
+                        android:text="event"
                         android:textSize="@dimen/app_text_size_small"
                         android:textColor="#66424242" />
                 </LinearLayout>

@@ -90,7 +90,7 @@
     <string name="setup_profile_msg">Please choose a picture :</string>
     <string name="gossip_hint">Juicy Title</string>
     <string name="permission_contact">For Better experience we need your permission to access contact</string>
-    <string name="events">Events</string>
+    <string name="event">Events</string>
     <string name="nav_circle">Circle</string>
     <string name="nav_discover">Discover</string>
     <string name="nav_ontap">OnTap</string>

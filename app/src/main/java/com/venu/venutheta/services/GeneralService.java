@@ -216,7 +216,7 @@ public class GeneralService extends IntentService {
     private void handleActionFollow(String id,String className, int type){
 
         if (type==1){
-            ParseObject follow = new ParseObject("FollowVersion3");
+            ParseObject follow = new ParseObject(GlobalConstants.CLASS_FOLLOW);
             follow.put("from", ParseUser.getCurrentUser());
             follow.put("to", ParseUser.createWithoutData(ParseUser.class,id));
             follow.put("fromId", ParseUser.getCurrentUser().getObjectId());
@@ -240,7 +240,7 @@ public class GeneralService extends IntentService {
 
         if (type==1){
 
-            ParseQuery<ParseObject> checkQ = ParseQuery.getQuery("FollowVersion3");
+            ParseQuery<ParseObject> checkQ = ParseQuery.getQuery(GlobalConstants.CLASS_FOLLOW);
             checkQ.whereEqualTo("from", ParseUser.getCurrentUser());
             checkQ.whereEqualTo("to", ParseUser.createWithoutData(ParseUser.class,id));
 
@@ -264,7 +264,7 @@ public class GeneralService extends IntentService {
 
     private void handleActionCheckFollowing(String id){
 
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("FollowVersion3");
+        ParseQuery<ParseObject> query = ParseQuery.getQuery(GlobalConstants.CLASS_FOLLOW);
         query.whereExists("from");
         query.whereEqualTo("from", ParseUser.getCurrentUser());
 
@@ -282,7 +282,7 @@ public class GeneralService extends IntentService {
     private void handleActionCancelGoing(String id,String className){
         ParseObject event = ParseObject.createWithoutData(className,id);
 
-        ParseQuery<ParseObject> checkQ = ParseQuery.getQuery("GoingList");
+        ParseQuery<ParseObject> checkQ = ParseQuery.getQuery(GlobalConstants.CLASS_GOING);
         checkQ.whereEqualTo("event",event);
         checkQ.whereEqualTo("user", ParseUser.getCurrentUser());
 
@@ -303,7 +303,7 @@ public class GeneralService extends IntentService {
     private void handleActionSetGoing(String id,String className){
         ParseObject event = ParseObject.createWithoutData(className,id);
 
-        ParseQuery<ParseObject> checkQ = ParseQuery.getQuery("GoingList");
+        ParseQuery<ParseObject> checkQ = ParseQuery.getQuery(GlobalConstants.CLASS_GOING);
         checkQ.whereEqualTo("event",event);
         checkQ.whereEqualTo("user", ParseUser.getCurrentUser());
 
@@ -333,7 +333,7 @@ public class GeneralService extends IntentService {
         isInvitedCheck.whereEqualTo("objectId",event.getObjectId());
         isInvitedCheck.whereContains("inviteList", ParseUser.getCurrentUser().getObjectId());
 
-        ParseQuery<ParseObject> checkQ = ParseQuery.getQuery("GoingList");
+        ParseQuery<ParseObject> checkQ = ParseQuery.getQuery(GlobalConstants.CLASS_GOING);
         checkQ.whereEqualTo("event",event);
         checkQ.whereEqualTo("user", ParseUser.getCurrentUser());
 
@@ -416,12 +416,12 @@ public class GeneralService extends IntentService {
     private void handleActionGenericAction(Boolean state, String id, String className,String relname) {
         if (id != null && className !=null) {
             ParseObject m = ParseObject.createWithoutData(className, id);
-            ParseQuery query = ParseQuery.getQuery("UserRelations");
+            ParseQuery query = ParseQuery.getQuery(GlobalConstants.CLASS_USER_RELATION);
             query.whereEqualTo("user", ParseUser.getCurrentUser());
             try {
                 ParseObject queryObject = query.getFirst();
                 m.fetch();
-                ParseObject notObj= new ParseObject("Notifications");
+                ParseObject notObj= new ParseObject(GlobalConstants.CLASS_NOTIFICATION);
                 notObj.put("from", ParseUser.getCurrentUser());
                 notObj.put("to",m.getParseUser("from"));
                 notObj.put("type",1);
@@ -454,7 +454,7 @@ public class GeneralService extends IntentService {
         ParseObject m = ParseObject.createWithoutData(className, id);
         try {
             m.fetch();
-            ParseObject obj= new ParseObject("Notifications");
+            ParseObject obj= new ParseObject(GlobalConstants.CLASS_NOTIFICATION);
             obj.put("from", ParseUser.getCurrentUser());
             obj.put("to",m.getParseUser("from"));
             obj.put("toId",m.getParseUser("from").getObjectId());
@@ -477,7 +477,7 @@ public class GeneralService extends IntentService {
             ParseObject m = ParseObject.createWithoutData(className, id);
             try {
 
-                ParseQuery<ParseObject> shareQ = ParseQuery.getQuery("Share");
+                ParseQuery<ParseObject> shareQ = ParseQuery.getQuery(GlobalConstants.CLASS_SHARE);
                 shareQ.whereEqualTo("object", m);
                 shareQ.whereEqualTo("from", ParseUser.getCurrentUser());
 
@@ -488,7 +488,7 @@ public class GeneralService extends IntentService {
                     m.increment("shares");
                     m.save();
 
-                    ParseObject shareObject= new ParseObject("Share");
+                    ParseObject shareObject= new ParseObject(GlobalConstants.CLASS_SHARE);
                     shareObject.put("from", ParseUser.getCurrentUser());
                     shareObject.put("fromID", ParseUser.getCurrentUser().getObjectId());
                     shareObject.put("object",m);
@@ -507,7 +507,7 @@ public class GeneralService extends IntentService {
         ParseObject m = ParseObject.createWithoutData(className, id);
 
         for (String number: numbers) {
-            ParseObject inviteObject=new ParseObject("PendingInvites");
+            ParseObject inviteObject=new ParseObject(GlobalConstants.CLASS_PENDING);
             inviteObject.put("from", m);
             inviteObject.put("event",m);
             inviteObject.put("toPhone",number);
@@ -525,7 +525,7 @@ public class GeneralService extends IntentService {
 
     private void handleActionUpdateRelation(){
 
-        ParseQuery relations = ParseQuery.getQuery("UserRelations");
+        ParseQuery relations = ParseQuery.getQuery(GlobalConstants.CLASS_USER_RELATION);
         relations.whereEqualTo("user", ParseUser.getCurrentUser());
         try {
             ParseObject relationLikeQ = relations.getFirst();

@@ -407,7 +407,6 @@
             android:name=".eventpage.EventPageActivity"
             android:theme="@style/AppTheme.NoActionBar" />
 
-
     </application>
 
 </manifest>

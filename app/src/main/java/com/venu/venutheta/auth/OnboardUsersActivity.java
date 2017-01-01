@@ -134,7 +134,7 @@ public class OnboardUsersActivity extends AppCompatActivity implements EasyPermi
                             mAdapter.setNewData(value);
                             mAdapter.setOnRecyclerViewItemChildClickListener((baseQuickAdapter, view, i) -> {
                                 if (view.getId() == R.id.user_act_check){
-                                    ParseObject follow = new ParseObject("FollowVersion3");
+                                    ParseObject follow = new ParseObject(GlobalConstants.CLASS_FOLLOW);
                                     follow.put("from", ParseUser.getCurrentUser());
                                     follow.put("to", mAdapter.getItem(i));
                                     follow.put("fromId", ParseUser.getCurrentUser().getObjectId());
@@ -179,7 +179,7 @@ public class OnboardUsersActivity extends AppCompatActivity implements EasyPermi
                             new Handler().postDelayed(() -> {
                                 mAdapter.setNewData(value);
                                 mAdapter.setOnRecyclerViewItemClickListener((view, i) -> {
-                                    ParseObject follow = new ParseObject("FollowVersion3");
+                                    ParseObject follow = new ParseObject(GlobalConstants.CLASS_FOLLOW);
                                     follow.put("from", ParseUser.getCurrentUser());
                                     follow.put("to", mAdapter.getItem(i));
                                     follow.put("fromId", ParseUser.getCurrentUser().getObjectId());

@@ -41,20 +41,20 @@ public class LoaderFeed {
                 List<ParseObject> RxThumbs = new ArrayList<ParseObject>();
 
                 //init followers query
-                ParseQuery<ParseObject> followersQuery = ParseQuery.getQuery("FollowVersion3");
+                ParseQuery<ParseObject> followersQuery = ParseQuery.getQuery(GlobalConstants.CLASS_FOLLOW);
                 followersQuery.whereEqualTo("from", ParseUser.getCurrentUser());
 
                 //non private query
-                ParseQuery<ParseObject> query = ParseQuery.getQuery("Feed");
+                ParseQuery<ParseObject> query = ParseQuery.getQuery(GlobalConstants.CLASS_FEED);
                 query.whereMatchesKeyInQuery(GlobalConstants.OBJ_FROM, "to", followersQuery);
                 query.whereEqualTo("isPrivate", false);
 
                 // user own query
-                ParseQuery<ParseObject> userQuery = ParseQuery.getQuery("Feed");
+                ParseQuery<ParseObject> userQuery = ParseQuery.getQuery(GlobalConstants.CLASS_FEED);
                 userQuery.whereEqualTo(GlobalConstants.OBJ_FROM, ParseUser.getCurrentUser());
 
                 //private query
-                ParseQuery<ParseObject> privateQuery = ParseQuery.getQuery("Feed");
+                ParseQuery<ParseObject> privateQuery = ParseQuery.getQuery(GlobalConstants.CLASS_FEED);
                 privateQuery.whereEqualTo("isPrivate", true);
                 privateQuery.whereEqualTo("PrivateList", ParseUser.getCurrentUser().getObjectId());
 
@@ -74,7 +74,7 @@ public class LoaderFeed {
                 mainQuery.whereExists("from");
 
                 // relations queyr
-                ParseQuery queryR = ParseQuery.getQuery("UserRelations");
+                ParseQuery queryR = ParseQuery.getQuery(GlobalConstants.CLASS_USER_RELATION);
                 queryR.whereEqualTo("user", ParseUser.getCurrentUser());
 
                 try {
@@ -114,7 +114,7 @@ public class LoaderFeed {
                         }
 
                         // set gossip details
-                        if (dataItem.getClassName().equals("Gossip")) {
+                        if (dataItem.getClassName().equals(GlobalConstants.CLASS_GOSSIP)) {
 
                             item.setGpTitle(dataItem.getString("title"));
                             item.setReactions(dataItem.getInt("reactions"));
@@ -136,7 +136,7 @@ public class LoaderFeed {
                             item.setReactions(dataItem.getInt("reactions"));
                             item.setImage(dataItem.getParseFile("image").getUrl());
 
-                            if (dataItem.getClassName().equals("Events")) {
+                            if (dataItem.getClassName().equals(GlobalConstants.CLASS_EVENT)) {
                                 item.setEvTitle(dataItem.getString("title"));
                                 item.setEvLocation(dataItem.getString("address"));
                                 item.setStatus(TimeUitls.getLiveBadgeText(dataItem.getDate("date")));
@@ -154,7 +154,7 @@ public class LoaderFeed {
 
                                 // set price
 
-                            } else if (dataItem.getClassName().equals("media")) {
+                            } else if (dataItem.getClassName().equals(GlobalConstants.CLASS_MEDIA)) {
                                 if (RxLove.contains(dataItem)) {
                                     item.setPpIsLike(true);
                                 } else {
@@ -197,7 +197,7 @@ public class LoaderFeed {
             @Override
             public void call(Subscriber<? super List<ModelFeedItem>> subscriber) {
 
-                Timber.e("feed");
+                Timber.e(GlobalConstants.CLASS_FEED);
                 List<ParseObject> data = new ArrayList<>();
                 List<ModelFeedItem> returnData = new ArrayList<>();
 
@@ -207,20 +207,20 @@ public class LoaderFeed {
                 List<ParseObject> RxThumbs = new ArrayList<ParseObject>();
 
                 //init followers query
-                ParseQuery<ParseObject> followersQuery = ParseQuery.getQuery("FollowVersion3");
+                ParseQuery<ParseObject> followersQuery = ParseQuery.getQuery(GlobalConstants.CLASS_FOLLOW);
                 followersQuery.whereEqualTo("from", ParseUser.getCurrentUser());
 
                 //non private query
-                ParseQuery<ParseObject> query = ParseQuery.getQuery("Feed");
+                ParseQuery<ParseObject> query = ParseQuery.getQuery(GlobalConstants.CLASS_FEED);
                 query.whereMatchesKeyInQuery(GlobalConstants.OBJ_FROM, "to", followersQuery);
                 query.whereEqualTo("isPrivate", false);
 
                 // user own query
-                ParseQuery<ParseObject> userQuery = ParseQuery.getQuery("Feed");
+                ParseQuery<ParseObject> userQuery = ParseQuery.getQuery(GlobalConstants.CLASS_FEED);
                 userQuery.whereEqualTo(GlobalConstants.OBJ_FROM, ParseUser.getCurrentUser());
 
                 //private query
-                ParseQuery<ParseObject> privateQuery = ParseQuery.getQuery("Feed");
+                ParseQuery<ParseObject> privateQuery = ParseQuery.getQuery(GlobalConstants.CLASS_FEED);
                 privateQuery.whereEqualTo("isPrivate", true);
                 privateQuery.whereEqualTo("PrivateList", ParseUser.getCurrentUser().getObjectId());
 
@@ -242,7 +242,7 @@ public class LoaderFeed {
                 mainQuery.whereExists("from");
 
                 // relations queyr
-                ParseQuery queryR = ParseQuery.getQuery("UserRelations");
+                ParseQuery queryR = ParseQuery.getQuery(GlobalConstants.CLASS_USER_RELATION);
                 queryR.whereEqualTo("user", ParseUser.getCurrentUser());
                 queryR.fromLocalDatastore();
 
@@ -261,8 +261,8 @@ public class LoaderFeed {
 
                     data = mainQuery.find();
                     if (skip == 0) {
-                        ParseObject.unpinAll("feed");
-                        ParseObject.pinAll("feed", data);
+                        ParseObject.unpinAll(GlobalConstants.CLASS_FEED);
+                        ParseObject.pinAll(GlobalConstants.CLASS_FEED, data);
 
                     }
                     for (ParseObject m : data
@@ -296,7 +296,7 @@ public class LoaderFeed {
                         }
 
                         // set gossip details
-                        if (dataItem.getClassName().equals("Gossip")) {
+                        if (dataItem.getClassName().equals(GlobalConstants.CLASS_GOSSIP)) {
 
                             item.setGpTitle(dataItem.getString("title"));
                             item.setReactions(dataItem.getInt("reactions"));
@@ -318,7 +318,7 @@ public class LoaderFeed {
                             item.setReactions(dataItem.getInt("reactions"));
                             item.setImage(dataItem.getParseFile("image").getUrl());
 
-                            if (dataItem.getClassName().equals("Events")) {
+                            if (dataItem.getClassName().equals(GlobalConstants.CLASS_EVENT)) {
                                 item.setEvTitle(dataItem.getString("title"));
                                 item.setEvLocation(dataItem.getString("address"));
                                 item.setStatus(TimeUitls.getLiveBadgeText(dataItem.getDate("date")));
@@ -336,7 +336,7 @@ public class LoaderFeed {
 
                                 // // TODO: 12/17/2016  price
 
-                            } else if (dataItem.getClassName().equals("media")) {
+                            } else if (dataItem.getClassName().equals(GlobalConstants.CLASS_MEDIA)) {
                                 if (RxLove.contains(dataItem)) {
                                     item.setPpIsLike(true);
                                 } else {

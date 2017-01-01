@@ -31,7 +31,7 @@ public class TaskSearchLoad implements Callable<List<SearchModel>> {
         GossipQuery.orderByAscending("shares");
         GossipQuery.addAscendingOrder("likes");
 
-        ParseQuery<ParseObject> eventQuery= ParseQuery.getQuery("Events");
+        ParseQuery<ParseObject> eventQuery= ParseQuery.getQuery(GlobalConstants.CLASS_EVENT);
         eventQuery.whereStartsWith("title", searchTerm);
         eventQuery.orderByAscending("shares");
         eventQuery.addAscendingOrder("likes");

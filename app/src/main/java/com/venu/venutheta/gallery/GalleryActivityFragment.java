@@ -91,7 +91,7 @@ public class GalleryActivityFragment extends Fragment implements SwipeRefreshLay
     public void onLoadMoreRequested() {
         if (query != null)
             query = null;
-        query= ParseQuery.getQuery("Events");
+        query= ParseQuery.getQuery(GlobalConstants.CLASS_EVENT);
         query.setLimit(20);
         query.setSkip(mCurrentCounter);
         query.orderByAscending("updatedAt");
@@ -120,7 +120,7 @@ public class GalleryActivityFragment extends Fragment implements SwipeRefreshLay
     }
 
     private void load() {
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("Events");
+        ParseQuery<ParseObject> query = ParseQuery.getQuery(GlobalConstants.CLASS_EVENT);
         query.orderByAscending("updatedAt");
         query.setLimit(20);
         query.findInBackground((objects, e) -> {
