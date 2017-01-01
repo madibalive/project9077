@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    android:gravity="center_vertical">
+
+
+    <com.android.liuzhuang.rcimageview.CircleImageView
+        android:id="@+id/comment_avatar"
+        android:src="@color/venu_flat_color"
+        android:layout_width="@dimen/avatar_small"
+        android:layout_height="@dimen/avatar_small" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/comment_msg"
+        android:background="@drawable/msg_item_in_bg"
+        android:gravity="start"
+        android:textSize="@dimen/app_text_size_medium"
+        tools:text="hello!hello!hello!hello!hello!hello!hello!hell sadasd  asdasd adso!"
+        android:maxWidth="230dp"
+        android:padding="10dp"
+        android:textColor="@android:color/white"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp" />
+
+
+</LinearLayout>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<com.android.liuzhuang.rcimageview.RoundCornerImageView
+    android:id="@+id/going_imageview"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:rciv_radius="8dp"
+    android:src="@color/venu_orange"
+    android:layout_width="80dp"
+    android:layout_height="80dp"
+    android:layout_marginBottom="8dp"
+    android:layout_marginLeft="8dp"
+    android:layout_marginTop="8dp"/>
+
+
+

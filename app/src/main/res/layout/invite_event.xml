@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    android:gravity="center_vertical"
+    android:layout_width="300dp"
+    android:layout_marginTop="60dp"
+    android:layout_marginBottom="60dp"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/image"
+        android:src="@color/venu_orange"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <com.wonderkiln.blurkit.BlurLayout
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:alpha="0.8"
+            android:gravity="center"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:textSize="50sp"
+                android:textColor="@color/dark_grey"
+                android:id="@+id/date_day"
+                android:text="22"
+                android:gravity="center"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginLeft="48dp"
+                android:layout_marginStart="48dp"
+                />
+
+
+
+            <TextView
+                android:layout_marginLeft="@dimen/dp_14"
+                android:layout_marginTop="10dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:layout_alignTop="@id/date_day"
+                android:layout_toRightOf="@id/date_day"
+                android:id="@+id/date_month"
+                android:text="December"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_marginLeft="@dimen/dp_14"
+                android:layout_marginTop="5dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:layout_toRightOf="@id/date_day"
+                android:layout_below="@id/date_month"
+                android:id="@+id/date_time"
+                android:text="12:20 PM"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:gravity="center"
+                android:layout_marginTop="@dimen/dp_22"
+                android:layout_below="@id/date_day"
+                android:id="@+id/title"
+                style="@style/veneProfileName"
+                android:text="@string/a_function_that_creates_a_new_instance_of_the_fragment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+
+
+            <LinearLayout
+                android:layout_marginTop="@dimen/dp_14"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/title"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/favorites"
+                    android:gravity="center"
+                    android:drawablePadding="4dp"
+                    android:drawableLeft="@drawable/ic_star"
+                    android:text="12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/comments"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center"
+                    android:drawablePadding="4dp"
+                    android:drawableLeft="@drawable/ic_chat"
+                    android:text="12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+
+
+        </RelativeLayout>
+    </com.wonderkiln.blurkit.BlurLayout>
+
+
+
+
+</FrameLayout>

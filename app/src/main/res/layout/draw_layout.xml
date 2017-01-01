@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding_normal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Entertainment"
+            android:textSize="@dimen/app_text_size_small" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/action_sign_in"
+            android:textSize="@dimen/app_text_size_small" />
+
+        <TextView
+            android:id="@+id/my_event_action"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:drawableEnd="@drawable/ic_overflow"
+            android:drawableRight="@drawable/ic_overflow"
+            android:gravity="center_vertical|end"
+            android:text="Action"
+            android:textSize="@dimen/app_text_size_small" />
+
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <TextView
+            android:id="@+id/my_event_date"
+            android:layout_width="45dp"
+            android:layout_height="80dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginEnd="6dp"
+            android:layout_marginRight="6dp"
+            android:background="@color/light_grey_200"
+            android:gravity="center"
+            android:text="22"
+            android:textSize="@dimen/app_text_size_large"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/my_event_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="60dp"
+            android:layout_marginRight="60dp"
+            android:layout_toEndOf="@id/my_event_date"
+            android:layout_toRightOf="@id/my_event_date"
+            android:maxLines="2"
+            android:text="tion in world of AI (or anything really sdsbeyond #sgatata "
+            android:textColor="@color/black"
+            android:textSize="@dimen/app_text_size_large" />
+
+        <TextView
+            android:id="@+id/my_event_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/my_event_title"
+            android:layout_marginTop="@dimen/dp_4"
+            android:layout_toEndOf="@id/my_event_date"
+            android:layout_toRightOf="@id/my_event_date"
+            android:text="Location East Adenta"
+            android:textSize="@dimen/app_text_size_small" />
+
+        <TextView
+            android:id="@+id/my_event_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/my_event_location"
+            android:layout_marginTop="@dimen/dp_4"
+            android:layout_toEndOf="@id/my_event_date"
+            android:layout_toRightOf="@id/my_event_date"
+            android:text="9:20 pm"
+            android:textSize="@dimen/app_text_size_small" />
+
+
+        <TextView
+            android:id="@+id/my_event_tag"
+            android:layout_width="65dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="6dp"
+            android:layout_marginStart="6dp"
+            android:drawableTop="@drawable/ic_tag"
+            android:gravity="center"
+            android:text="GH 45"
+            android:textSize="@dimen/app_text_size_large" />
+
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginBottom="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_10"
+        android:contentDescription="sas"
+        android:src="@color/venu_flat_color" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/overall_stat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_22"
+            android:layout_marginStart="@dimen/dp_22"
+            android:padding="4dp"
+            android:text="Overall Statistic"
+            android:textSize="@dimen/app_text_size_small" />
+
+        <FrameLayout
+            android:id="@+id/goal_check"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_below="@id/overall_stat"
+            android:layout_marginLeft="@dimen/dp_22"
+            android:layout_marginStart="@dimen/dp_22"
+            android:background="@color/venu_blue">
+
+
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/comment_stat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/goal_check"
+            android:layout_toEndOf="@id/goal_check"
+            android:layout_toRightOf="@id/goal_check"
+            android:drawableTop="@drawable/ic_star"
+            android:paddingEnd="0dp"
+            android:paddingLeft="@dimen/dp_22"
+            android:paddingRight="0dp"
+            android:paddingStart="@dimen/dp_22"
+            android:text="@string/action_sign_in"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/star_stat"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/comment_stat"
+            android:layout_toEndOf="@id/goal_check"
+            android:layout_toRightOf="@id/goal_check"
+            android:drawableTop="@drawable/ic_chat"
+            android:paddingEnd="0dp"
+            android:paddingLeft="@dimen/dp_22"
+            android:paddingRight="0dp"
+            android:paddingStart="@dimen/dp_22"
+            android:paddingTop="@dimen/padding_normal"
+            android:text="@string/action_sign_in"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding_normal"
+        android:text="@string/activity_contact_detail" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageButton
+            android:id="@+id/my_event_trending"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_below="@id/my_event_date"
+            android:layout_marginEnd="6dp"
+            android:layout_marginRight="6dp"
+            android:background="@android:color/transparent"
+            android:gravity="center"
+            android:src="@drawable/ic_line_chart"
+            android:textSize="@dimen/app_text_size_large"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/my_event_favs"
+            style="@style/veneTitleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/my_event_trending"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_toEndOf="@id/my_event_trending"
+            android:layout_toRightOf="@id/my_event_trending"
+            android:drawableEnd="@drawable/ic_star"
+            android:drawableRight="@drawable/ic_star"
+            android:text="824k  " />
+
+
+        <TextView
+            android:id="@+id/my_event_comments"
+            style="@style/veneTitleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/my_event_trending"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_toEndOf="@id/my_event_favs"
+            android:layout_toRightOf="@id/my_event_favs"
+            android:drawableEnd="@drawable/ic_chat"
+            android:drawableRight="@drawable/ic_chat"
+            android:text="12m  " />
+
+
+    </RelativeLayout>
+
+</LinearLayout>
+

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="@dimen/dp_4">
+
+    <com.android.liuzhuang.rcimageview.RoundCornerImageView
+        android:scaleType="centerCrop"
+        android:id="@+id/ev_image"
+        android:layout_height="100dp"
+        android:layout_marginRight="@dimen/padding_normal"
+        android:src="@color/venu_flat_color"
+        app:rciv_radius="@dimen/dp_4"
+        android:layout_width="90dp" />
+
+    <TextView
+        android:padding="2dp"
+        android:id="@+id/ev_feature_tag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/category_background_default"
+        android:text="FEATURE"
+        android:textStyle="bold"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/app_text_size_small" />
+
+    <TextView
+        android:padding="2dp"
+        android:id="@+id/ev_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/ev_image"
+        android:background="@drawable/category_background_default"
+        android:backgroundTint="@android:color/darker_gray"
+        android:text="UPCOMING"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        android:textSize="@dimen/app_text_size_small" />
+
+
+    <TextView
+        android:id="@+id/ev_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ev_status"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@id/ev_image"
+        android:text="TITLE HERE"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@android:color/black" />
+
+    <TextView
+        android:id="@+id/ev_tag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ev_title"
+        android:layout_marginTop="2dp"
+        android:layout_toRightOf="@id/ev_image"
+        android:text="#event suprised"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+
+</RelativeLayout>

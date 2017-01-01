@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
+        app:elevation="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/collapsing_toolbar"
+            android:fitsSystemWindows="false"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_scrollFlags="scroll"
+            app:titleEnabled="false">
+            <!-- minHeight determines the point to fade in the status bar scrim. Ideally it would
+                 fade in when the image has completely collapsed but it needs to be > 0. -->
+
+            <FrameLayout
+                android:id="@+id/session_photo_container"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_collapseMode="parallax"
+                app:aspectRatio="1.6">
+
+                <ImageView
+                    android:id="@+id/session_photo"
+                    android:layout_width="match_parent"
+                    android:layout_height="400dp"
+                    android:scaleType="centerCrop" />
+
+                <Button
+                    android:id="@+id/watch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                    android:textColor="@android:color/white"
+                    android:drawableTop="@drawable/ic_play"
+                    android:drawablePadding="@dimen/spacing_normal"
+                    android:paddingTop="28dp"
+                    style="?borderlessButtonStyle" />
+                <!-- paddingTop offsets the text+drawablePadding to center the image -->
+
+            </FrameLayout>
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+        <include
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            layout="@layout/event_main_layout"/>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/event_main_layout"/>
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/add_schedule_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_anchorGravity="bottom|start|left"
+        android:visibility="visible"
+        android:clickable="true"
+        android:focusable="true"
+        app:srcCompat="@drawable/ic_thumb_default"
+        app:useCompatPadding="true" />
+
+
+</android.support.design.widget.CoordinatorLayout>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/core_swipelayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+    <RelativeLayout
+        android:id="@+id/toastBar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="60dp"
+        android:visibility="visible"
+        >
+
+        <com.example.madiba.venu_alpha.ui.StateButton
+            android:minWidth="0dp"
+            android:id="@+id/new_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:padding="@dimen/dp_14"
+            android:text="New Content "
+            android:textAllCaps="false"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="@dimen/dp_22"
+            app:sradius="4dp"
+            app:normalTextColor="@color/white"
+            app:normalBackgroundColor="@color/venu_red"
+            app:pressedBackgroundColor="@color/dark_grey"
+            app:pressedTextColor="@android:color/white"/>
+
+    </RelativeLayout>
+
+
+
+
+</FrameLayout>

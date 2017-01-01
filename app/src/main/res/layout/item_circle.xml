@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="center_vertical"
+    android:orientation="vertical"
+    android:background="#fff"
+    android:padding="@dimen/dp_10">
+
+    <com.android.liuzhuang.rcimageview.RoundCornerImageView
+        android:id="@+id/cc_i_avatar"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginRight="@dimen/dp_4"
+        app:srcCompat="@drawable/ic_default_avatar" />
+
+    <TextView
+        android:layout_marginLeft="4dp"
+        android:paddingTop="2dp"
+        android:id="@+id/cc_i_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/cc_i_avatar"
+        android:text="sample"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+    <TextView
+        android:layout_marginLeft="4dp"
+        android:layout_below="@id/cc_i_name"
+        android:id="@+id/cc_i_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/cc_i_avatar"
+        android:textStyle="italic"
+        android:text="follow you"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+    <com.example.madiba.venu_alpha.ui.StateButton
+        android:minHeight="0dp"
+        android:minWidth="0dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:id="@+id/cc_i_unfollow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:padding="@dimen/dp_10"
+        android:text="Follow"
+        android:textSize="@dimen/app_text_size_medium"
+        app:sradius="2dp"
+        app:normalStrokeColor="@color/mid_grey_200"
+        app:normalStrokeWidth="1dp"
+        app:normalTextColor="@color/mid_grey_200"
+        app:pressedStrokeWidth="1dp"
+        app:pressedStrokeColor="@android:color/white"
+        app:pressedBackgroundColor="@color/mid_grey_200"
+        app:pressedTextColor="@android:color/white"/>
+
+</RelativeLayout>

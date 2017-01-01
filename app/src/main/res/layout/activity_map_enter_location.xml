@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="450dp">
+
+        <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/map"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:name="com.google.android.gms.maps.SupportMapFragment"/>
+
+        <LinearLayout
+            android:background="@color/white"
+            android:layout_marginTop="@dimen/dp_22"
+            android:layout_marginLeft="@dimen/padding_normal"
+            android:layout_marginRight="@dimen/padding_normal"            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/enter_search"
+                android:hint="Search Location .."
+                android:padding="@dimen/dp_10"
+                android:layout_weight="1"
+                android:layout_width="@dimen/card_corner_radius_0dp"
+                android:layout_height="wrap_content" />
+
+            <ImageButton
+                android:id="@+id/search"
+                android:padding="@dimen/dp_10"
+                android:background="@android:color/transparent"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+
+    </FrameLayout>
+
+    <EditText
+        android:id="@+id/enter_Location"
+        android:padding="@dimen/dp_10"
+        android:hint="Enter Location Name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:baselineAligned="false"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="12dp"
+        android:splitMotionEvents="false"
+        android:gravity="end">
+
+        <Button
+            android:id="@+id/buttonEnd"
+            android:minWidth="48dp"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:text="Cancel"
+            android:textAllCaps="true"
+            android:textSize="@dimen/app_text_size_medium"
+            android:background="?android:selectableItemBackground"
+            android:gravity="center_vertical"
+            android:paddingLeft="16dp"
+            android:paddingStart="16dp"
+            android:paddingRight="16dp"
+            android:paddingEnd="16dp"
+            android:textColor="#80000000"
+            />
+
+        <Button
+            android:id="@+id/buttonStart"
+            android:minWidth="48dp"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:text="Proceed"
+            android:textAllCaps="true"
+            android:textSize="@dimen/app_text_size_medium"
+            android:background="?android:selectableItemBackground"
+            android:gravity="center_vertical"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:textColor="@color/venu_flat_color"
+            />
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

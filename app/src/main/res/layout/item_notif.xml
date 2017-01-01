@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:foreground="?android:selectableItemBackground"
+    android:padding="@dimen/dp_10"
+    >
+
+    <com.android.liuzhuang.rcimageview.CircleImageView
+        android:id="@+id/notif_i_avatar"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginEnd="@dimen/padding_normal"
+        android:layout_marginStart="@dimen/padding_normal"
+        android:src="@color/venu_flat_color" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/notif_i_avatar"
+        android:layout_marginRight="60dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/notif_i_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/app_text_size_small"
+            tools:text="Nick B" />
+
+        <TextView
+            android:id="@+id/notif_i_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="For initial setup itp's"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/notif_i_btn"
+            style="@style/Base.Widget.AppCompat.Button.Borderless"
+            android:minWidth="0dp"
+            android:minHeight="@dimen/card_corner_radius_0dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/app_text_size_medium"
+            android:text="Accept Invite"/>
+
+    </LinearLayout>
+
+    <com.android.liuzhuang.rcimageview.RoundCornerImageView
+        android:layout_marginRight="@dimen/dp_10"
+        android:layout_marginEnd="@dimen/dp_10"
+        android:id="@+id/notif_i_rightimage"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:src="@color/venu_flat_color"
+        app:rciv_radius="@dimen/dp_4"
+         />
+
+
+</RelativeLayout>

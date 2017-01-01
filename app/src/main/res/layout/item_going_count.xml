@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/going_bgrnd"
+    android:foreground="?android:selectableItemBackground"
+    android:background="@color/venu_flat_color"
+    android:layout_width="80dp"
+    android:layout_height="80dp"
+    android:layout_marginBottom="8dp"
+    android:layout_marginLeft="8dp"
+    android:layout_marginTop="8dp">
+
+    <TextView
+        android:id="@+id/going_count"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:gravity="center_vertical"
+        android:paddingLeft="8dp"
+        android:text="+120k"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@android:color/white" />
+
+    <TextView
+        android:id="@+id/going_name"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:gravity="bottom"
+        android:paddingBottom="8dp"
+        android:paddingLeft="10dp"
+        android:text="People"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small.Inverse"
+     />
+
+
+</FrameLayout>

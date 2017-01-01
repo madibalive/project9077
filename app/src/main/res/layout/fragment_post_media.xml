@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/content_media_post"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.Toolbar
+        android:layout_alignParentTop="true"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize">
+
+        <ImageButton
+            android:background="@android:color/transparent"
+            android:id="@+id/mp_closeBtn"
+            android:layout_margin="@dimen/dp_10"
+            android:src="@drawable/ic_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+    </android.support.v7.widget.Toolbar>
+
+
+
+    <ImageView
+        android:id="@+id/mp_new_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.5"
+        android:scaleType="centerCrop" />
+
+    <LinearLayout
+        android:layout_centerInParent="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/padding_normal">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/mp_new_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone">
+
+        </android.support.v7.widget.RecyclerView>
+
+        <LinearLayout
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:id="@+id/mp_holder_linearlayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="fill_horizontal">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/mp_new_edittext"
+                    android:nextFocusDown="@+id/mp_new_edittext_next"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                    android:hint="#hashtag message" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <ProgressBar
+
+                android:id="@+id/mp_loading"
+                style="@android:style/Widget.ProgressBar.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginRight="5dp"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+        <android.support.v7.widget.AppCompatCheckBox
+            android:id="@+id/mp_switch"
+            android:checked="true"
+            android:textSize="@dimen/app_text_size_small"
+            android:text="Private Broadcast"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <com.example.madiba.venu_alpha.ui.StateButton
+            android:id="@+id/mp_new_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Post"
+            app:normalBackgroundColor="@color/venu_flat_color"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+    </LinearLayout>
+
+</RelativeLayout>

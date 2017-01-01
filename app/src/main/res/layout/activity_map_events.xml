@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/map"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:name="com.google.android.gms.maps.SupportMapFragment"/>
+
+        <LinearLayout
+            android:layout_gravity="top"
+            android:background="@color/white"
+            android:layout_marginTop="@dimen/dp_22"
+            android:layout_marginLeft="@dimen/padding_normal"
+            android:layout_marginRight="@dimen/padding_normal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageButton
+                android:id="@+id/close"
+                android:padding="@dimen/dp_10"
+                android:background="@android:color/transparent"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_close"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:id="@+id/enter_search"
+                android:hint="Search Location .."
+                android:padding="@dimen/dp_10"
+                android:layout_weight="1"
+                android:layout_width="@dimen/card_corner_radius_0dp"
+                android:layout_height="wrap_content" />
+
+            <ImageButton
+                android:id="@+id/search"
+                android:padding="@dimen/dp_10"
+                android:background="@android:color/transparent"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_gravity="bottom"
+            android:background="@android:color/transparent"
+            android:layout_alignParentBottom="true"
+            android:id="@+id/event_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:clipToPadding="false"
+            android:paddingBottom="50dp"
+             />
+
+
+
+
+
+    </FrameLayout>
+
+
+
+</LinearLayout>

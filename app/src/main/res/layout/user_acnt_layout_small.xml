@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:gravity="center_vertical"
+    android:padding="@dimen/padding_normal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.android.liuzhuang.rcimageview.CircleImageView
+        android:id="@+id/user_act_avatar"
+        app:srcCompat="@color/venu_flat_color"
+        android:layout_width="@dimen/avatar_small"
+        android:layout_height="@dimen/avatar_small" />
+
+    <TextView
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@id/user_act_avatar"
+        android:id="@+id/user_act_username"
+        android:text="Username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <com.example.madiba.venu_alpha.ui.StateButton
+        android:text="Follow"
+        android:textSize="@dimen/app_text_size_small"
+        android:padding="@dimen/padding_normal"
+        android:minHeight="@dimen/card_corner_radius_0dp"
+        android:minWidth="@dimen/card_corner_radius_0dp"
+        style="@style/venuButton.small"
+        android:id="@+id/user_act_check"
+        android:layout_alignParentRight="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:normalBackgroundColor="@android:color/white"
+        app:normalStrokeColor="@color/venu_flat_color"
+        app:normalStrokeWidth="2dp"
+        app:normalTextColor="@color/mid_grey_200"
+        app:pressedBackgroundColor="@color/venu_flat_color"
+        app:pressedTextColor="@android:color/white" />
+
+</RelativeLayout>

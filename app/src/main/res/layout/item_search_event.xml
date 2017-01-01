@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/dp_4"
+   >
+
+    <ImageView
+        android:id="@+id/ev_image"
+        android:layout_width="@dimen/avatar_small"
+        android:layout_height="@dimen/avatar_small"
+        android:layout_marginRight="8dp"
+        android:background="@color/venu_flat_color" />
+
+    <TextView
+        android:id="@+id/ev_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/ev_image"
+        android:text="TITLE HERE"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:textColor="@android:color/black" />
+
+    <TextView
+        android:id="@+id/ev_tag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ev_title"
+        android:layout_marginTop="2dp"
+        android:layout_toRightOf="@id/ev_image"
+        android:textColor="@color/venu_flat_color"
+        android:text="#event suprised"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+
+</RelativeLayout>

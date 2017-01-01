@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    android:orientation="vertical"
+    android:paddingTop="@dimen/dp_10"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:padding="@dimen/dp_10"
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:foreground="?android:selectableItemBackground"
+        android:importantForAccessibility="yes"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <TextView
+            android:paddingLeft="@dimen/dp_10"
+            android:text="Gallery"
+            android:id="@+id/attendee"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|start|left"
+            android:textColor="@color/venu_flat_color"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+        <TextView
+            android:text="340"
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/padding_normal"
+            android:layout_marginRight="@dimen/padding_normal"
+            android:layout_gravity="top|end|right"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+    </FrameLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/cards"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/compact_list_tile"
+        android:layout_marginTop="@dimen/padding_normal"
+        android:scrollbars="horizontal"
+        android:scrollbarStyle="insideOverlay"
+        android:scrollbarSize="4dp"
+        app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+        android:orientation="horizontal" />
+
+
+</LinearLayout>

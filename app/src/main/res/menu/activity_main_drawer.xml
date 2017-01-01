@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_events"
+            android:title="@string/events" />
+        <item
+            android:id="@+id/nav_circle"
+            android:title="@string/nav_circle" />
+        <item
+            android:id="@+id/nav_discover"
+            android:title="@string/nav_discover" />
+        <item
+            android:id="@+id/nav_ontap"
+            android:title="@string/nav_ontap" />
+    </group>
+    <item android:title="@string/nav_account">
+        <menu>
+            <item
+                android:id="@+id/nav_settings"
+                android:checkable="true"
+                android:title="@string/nav_manage" />
+        </menu>
+    </item>
+
+</menu>

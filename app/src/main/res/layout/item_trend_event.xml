@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="300dp"
+    android:orientation="vertical">
+
+
+    <ImageView
+        android:id="@+id/ev_image"
+        android:layout_width="match_parent"
+        android:layout_height="190dp"
+        android:layout_marginTop="25dp"
+        android:src="@color/venu_flat_color" />
+
+    <TextView
+        android:id="@+id/ev_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_22"
+        android:layout_marginStart="@dimen/dp_22"
+        android:text="#6"
+        android:textColor="@color/venu_blue"
+        android:textSize="50sp"
+        android:textStyle="bold" />
+
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginEnd="10dp"
+        android:layout_marginLeft="@dimen/dp_22"
+        android:layout_marginRight="10dp"
+        android:layout_marginStart="@dimen/dp_22"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/ev_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingEnd="0dp"
+            android:paddingLeft="@dimen/dp_10"
+            android:paddingRight="0dp"
+            android:paddingStart="@dimen/dp_10"
+            android:paddingTop="@dimen/dp_10"
+            android:text="12 DEC 10:00 PM"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+        <TextView
+            android:id="@+id/ev_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingEnd="0dp"
+            android:paddingLeft="@dimen/dp_10"
+            android:paddingRight="0dp"
+            android:paddingStart="@dimen/dp_10"
+            android:paddingTop="4dp"
+            android:text="@string/a_function_that_creates_a_new_instance_of_the_fragment"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/text_black" />
+
+        <TextView
+            android:id="@+id/ev_desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingEnd="0dp"
+            android:paddingLeft="@dimen/dp_10"
+            android:paddingRight="0dp"
+            android:paddingStart="@dimen/dp_10"
+            android:paddingTop="@dimen/dp_10"
+            android:text="Check your proxy settings or contact your network administrator to make sure the proxy server is working. If you don't believe: "
+            android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+    </LinearLayout>
+
+</FrameLayout>

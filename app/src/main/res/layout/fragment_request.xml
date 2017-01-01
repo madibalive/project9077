@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:padding="@dimen/padding_normal"
+    android:layout_height="match_parent">
+    <ImageView
+        android:layout_gravity="center_vertical"
+        android:src="@drawable/ic_help"
+        android:id="@+id/icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp" />
+
+    <LinearLayout
+        android:visibility="gone"
+
+        android:orientation="vertical"
+        android:id="@+id/request_home_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            style="@style/veneTitleText"
+            android:text="Select Category To Proceed "
+            android:id="@+id/home_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/home_recyclerview"
+            android:layout_marginBottom="@dimen/dp_10"
+            android:layout_width="match_parent"
+            android:layout_marginTop="16dp"
+            android:layout_height="wrap_content">
+
+        </android.support.v7.widget.RecyclerView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:id="@+id/request_order_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <TextView
+            style="@style/veneTitleText"
+            android:text="Steve Punt and Hugh Dennis are joined by Nish Kumar, Dane Baptiste, Rachel Parris. Luke Kempner and Jess Ransom to present the news via topical stand up and sketches."
+            android:id="@+id/order_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/venu_flat_color" />
+
+
+        <TextView
+            android:id="@+id/order_item"
+            android:drawablePadding="@dimen/dp_4"
+            style="@style/veneTitleText"
+            android:gravity="left|center_vertical"
+            android:drawableLeft="@drawable/ic_submit_feedback"
+            android:text="Bartender"
+            android:layout_width="match_parent"
+            android:textColor="@color/black"
+            android:layout_height="wrap_content" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="12dp"
+            android:gravity="end">
+
+            <Button
+                android:layout_gravity="bottom"
+                android:id="@+id/buttonEnd"
+                android:minWidth="48dp"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:text="Go back"
+                android:textAllCaps="true"
+                android:textSize="@dimen/app_text_size_medium"
+                android:background="?android:selectableItemBackground"
+                android:gravity="center_vertical"
+                android:paddingLeft="16dp"
+                android:paddingStart="16dp"
+                android:paddingRight="16dp"
+                android:paddingEnd="16dp"
+                android:textColor="#80000000"
+                />
+
+            <Button
+                android:layout_gravity="bottom"
+                android:id="@+id/buttonStart"
+                android:minWidth="48dp"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:text="Order"
+                android:textAllCaps="true"
+                android:textSize="@dimen/app_text_size_medium"
+                android:background="?android:selectableItemBackground"
+                android:gravity="center_vertical"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:textColor="#80000000"
+                />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+
+
+
+</LinearLayout>

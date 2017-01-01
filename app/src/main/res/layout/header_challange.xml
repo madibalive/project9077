@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="225dp"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginTop="25dp"
+            android:src="@color/venu_flat_color" />
+
+        <TextView
+            android:id="@+id/hashtag"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_22"
+            android:text="#JohnSon"
+            android:textColor="@color/venu_blue"
+            android:textSize="40dp"
+            android:textStyle="bold" />
+    </FrameLayout>
+
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_22"
+        android:paddingLeft="@dimen/dp_10"
+        android:paddingTop="10dp"
+        android:textSize="@dimen/app_text_size_large"
+        android:text="@string/a_function_that_creates_a_new_instance_of_the_fragment"
+        android:textColor="@color/text_black"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/desc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/dp_10"
+        android:paddingTop="@dimen/dp_10"
+        android:text="Check your proxy settings or contact your network administrator to make sure the proxy server is working. If you don't believe: "
+        android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_22"
+        android:gravity="center">
+
+        <com.example.madiba.venu_alpha.ui.StateButton
+            android:id="@+id/ch_view_Friends"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:minHeight="@dimen/card_corner_radius_0dp"
+            android:text="Friends"
+            app:normalStrokeColor="@color/venu_blue"
+            app:normalStrokeWidth="2dp"
+            app:normalTextColor="@color/venu_blue"
+            app:normalBackgroundColor="@color/white"
+            app:pressedBackgroundColor="@color/venu_blue"
+            app:unableBackgroundColor="@color/white"/>
+
+        <com.example.madiba.venu_alpha.ui.StateButton
+            android:id="@+id/ch_view_Global"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:minHeight="@dimen/card_corner_radius_0dp"
+            android:text="Global"
+            app:normalStrokeColor="@color/venu_blue"
+            app:normalStrokeWidth="2dp"
+            app:normalTextColor="@color/white"
+            app:normalBackgroundColor="@color/venu_blue"
+            app:pressedBackgroundColor="@color/white"
+            app:pressedTextColor="@color/venu_blue"
+            app:unableBackgroundColor="@android:color/holo_red_light"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>
+

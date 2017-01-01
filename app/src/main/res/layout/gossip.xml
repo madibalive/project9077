@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="vertical"
+    android:padding="@dimen/dp_10">
+    <TextView
+        android:id="@+id/f_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/dp_4"
+        android:text="By Sample"
+        android:textSize="@dimen/app_text_size_small"
+        />
+
+    <TextView
+        android:id="@+id/main_gossip_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/f_name"
+        android:drawableLeft="@drawable/ic_qoute"
+        android:drawablePadding="@dimen/dp_4"
+        android:paddingBottom="@dimen/dp_4"
+        android:text=" asadsa dsad sample bird namde the sasdk asd sample sad adasd asda  asd"
+        android:textColor="@color/dark_grey"
+        android:textSize="16sp"
+        android:textStyle="italic"
+        />
+
+
+
+    <LinearLayout
+        android:layout_marginTop="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/f_gossip_time"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableLeft="@drawable/ic_alarm_clock"
+            android:drawablePadding="@dimen/dp_4"
+            android:gravity="center_vertical"
+            android:text="12 hour left"
+            android:textSize="@dimen/app_text_size_large"
+            />
+
+        <TextView
+            android:id="@+id/f_like"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_like"
+            android:drawablePadding="@dimen/dp_4"
+            android:gravity="center"
+            android:text="12"
+            android:textStyle="bold" />
+
+
+        <ImageButton
+            android:background="@android:color/transparent"
+            android:id="@+id/f_share"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:src="@drawable/ic_return"
+            android:drawablePadding="@dimen/dp_4"
+            android:gravity="center"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

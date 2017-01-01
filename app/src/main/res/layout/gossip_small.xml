@@ -1,0 +1,42 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:gravity="center_vertical"
+    android:padding="@dimen/dp_10"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <TextView
+        android:textSize="@dimen/app_text_size_small"
+        android:id="@+id/gossip_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="By Sample"
+        android:paddingBottom="@dimen/dp_4"
+        />
+
+    <TextView
+        android:drawablePadding="@dimen/dp_4"
+        android:drawableLeft="@drawable/ic_qoute"
+        android:textStyle="italic"
+        android:layout_below="@id/gossip_name"
+        android:id="@+id/gossip_title"
+        android:paddingBottom="@dimen/dp_4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/app_text_size_medium"
+        android:text=" asadsa dsad sample bird namde the sasdk asd sample sad adasd asda  asd"
+        android:textColor="@color/dark_grey"
+        />
+    <TextView
+        android:drawableTint="@color/venu_red"
+        android:drawablePadding="@dimen/dp_4"
+        android:drawableLeft="@drawable/ic_time_small"
+        android:gravity="center_vertical"
+        android:textSize="@dimen/app_text_size_small"
+        android:id="@+id/gossip_time_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="12 hour left"
+        />
+
+</LinearLayout>

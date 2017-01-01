@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- STANDARD COLORS -->
+
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="hint_foreground_material_light">#00000000</color>
+    <color name="hint_foreground_material_dark">#00000000</color>
+
+
+    <color name="app_body_text_2_inverse">#8affffff</color>
+    <color name="venu_flat_color">#ff0097a7</color>
+    <color name="venu_flat_dark">#ff004446</color>
+    <color name="venu_subheader">#de004446</color>
+
+    <!-- VIBRANT  COLORS -->
+
+    <color name="venu_orange">#ff7f00</color>
+    <color name="venu_pink">#f08080</color>
+    <color name="venu_blue">#0c52ff</color>
+    <color name="venu_red">#db3434</color>
+    <color name="venu_green">#11b900</color>
+    <color name="venu_yellow">#ffff00</color>
+
+
+    <color name="light_grey">#fff5f5f5</color>
+    <color name="light_grey_200">#ffeeeeee</color>
+    <color name="light_grey_300">#ffe0e0e0</color>
+    <color name="mid_grey_200">#686868</color>
+    <color name="mid_grey_300">#40808080</color>
+    <color name="dark_grey">#ff292929</color>
+
+
+    <!-- text colors -->
+
+    <color name="text_black">#292927</color>
+    <color name="text_blue">#0c52ff</color>
+
+
+    <!-- UTILIY COLORS -->
+
+    <color name="scrim">#99323232</color>
+    <color name="black_overlay">#66000000</color>
+    <color name="black_80">#de000000</color> <!-- 87% -->
+    <color name="black_50">#8a000000</color> <!-- 54% -->
+    <color name="black_30">#61000000</color> <!-- 38% -->
+
+</resources>

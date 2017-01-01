@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/event_page_title"
+            style="@style/veneProfileName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/a_function_that_creates_a_new_instance_of_the_fragment"
+            android:textAllCaps="true"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Title" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:id="@+id/event_page_favs"
+                style="@style/veneProfileName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_star"
+                android:drawablePadding="@dimen/dp_4"
+                android:drawableStart="@drawable/ic_star"
+                android:gravity="end"
+                android:text="120k" />
+
+            <TextView
+                android:id="@+id/event_page_cmts"
+                style="@style/veneProfileName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+
+                android:drawableLeft="@drawable/ic_chat"
+                android:drawablePadding="8dp"
+                android:drawableStart="@drawable/ic_chat"
+                android:text="40k" />
+
+        </LinearLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/light_grey"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <com.android.liuzhuang.rcimageview.CircleImageView
+                android:id="@+id/event_page_avatar"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:src="@color/venu_flat_color"
+                />
+
+            <TextView
+                android:id="@+id/event_page_organiser"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignTop="@id/event_page_avatar"
+                android:text="Organiser"
+                android:textSize="@dimen/app_text_size_small" />
+
+            <TextView
+                android:id="@+id/event_page_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@id/event_page_organiser"
+                android:text="Kevent bee"
+                android:textSize="@dimen/app_text_size_medium"
+                android:textStyle="bold" />
+
+
+        </RelativeLayout>
+
+
+        <include
+            layout="@layout/event_infor_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_margin="@dimen/padding_normal"
+            android:background="@drawable/applozic_map_offline_thumbnail">
+
+            <android.support.design.widget.FloatingActionButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_margin="@dimen/padding_normal"
+                android:src="@drawable/ic_cursor" />
+
+        </FrameLayout>
+
+        <include
+            layout="@layout/event_buy_ticket"/>
+
+
+        <TextView
+            android:id="@+id/event_page_desc"
+            style="@style/veneProfileName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_help_2"
+            android:drawablePadding="@dimen/dp_10"
+            android:drawableStart="@drawable/ic_help_2"
+            android:padding="@dimen/dp_22"
+            android:text="DFA stands for deterministic finite automaton. Basically, it is a directed graph where each
+node has edges coming out of it labeled with the letters from a fixed finite alphabet Σ. One
+node is designated as the start node, and a set of nodes are designated as final nodes"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
+
+        <include layout="@layout/event_attendee_layout" />
+
+        <include
+            layout="@layout/event_attendee_layout"/>
+
+
+
+    </LinearLayout>
+</ScrollView>

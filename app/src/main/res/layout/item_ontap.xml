@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/dp_10"
+    android:padding="@dimen/padding_normal"
+    android:background="@drawable/category_background_default"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/ot_i_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:text="Order Number"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small.Inverse" />
+
+    <TextView
+        android:layout_marginRight="50dp"
+        android:id="@+id/ot_i_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@id/ot_i_location"
+        android:text="Status"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small.Inverse" />
+
+    <TextView
+        android:paddingTop="@dimen/dp_4"
+        android:paddingBottom="@dimen/dp_4"
+        android:id="@+id/ot_i_order_no"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ot_i_location"
+        android:layout_alignParentRight="true"
+        android:text="Order Number"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small.Inverse" />
+
+    <TextView
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:paddingTop="@dimen/dp_4"
+        android:paddingBottom="@dimen/dp_4"
+        android:layout_marginRight="@dimen/dp_10"
+        android:id="@+id/ot_i_order_status"
+        android:layout_below="@id/ot_i_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/ot_i_status"
+        android:text="Status"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+
+    <View
+
+        android:id="@+id/divider"
+        android:layout_below="@id/ot_i_order_status"
+        android:background="@color/light_grey_200"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+
+
+
+    <TextView
+        android:paddingTop="@dimen/dp_10"
+        android:layout_below="@id/divider"
+        android:id="@+id/ot_i_order_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:text="Bartender"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large.Inverse" />
+
+
+
+</RelativeLayout>

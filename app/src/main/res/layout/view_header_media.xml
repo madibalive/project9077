@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    android:orientation="vertical"
+    android:id="@+id/md_top_bar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentTop="true"
+    android:paddingLeft="@dimen/dp_14"
+    android:paddingRight="@dimen/dp_14"
+    android:paddingTop="@dimen/dp_10"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.android.liuzhuang.rcimageview.CircleImageView
+            android:id="@+id/md_avatar"
+            android:src="@color/venu_blue"
+            android:layout_width="28dp"
+            android:layout_marginRight="@dimen/dp_10"
+            android:layout_height="28dp" />
+
+        <TextView
+            android:id="@+id/md_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Alicia James "
+            android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+        <ImageButton
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_close"
+            android:id="@+id/md_closeBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|center_vertical"
+            />
+
+    </LinearLayout>
+
+
+</LinearLayout>

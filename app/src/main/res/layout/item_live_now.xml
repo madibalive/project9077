@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="150dp"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginLeft="8dp"
+    android:layout_marginBottom="8dp"
+    android:orientation="vertical">
+
+    <com.android.liuzhuang.rcimageview.RoundCornerImageView
+        android:id="@+id/live_now_image"
+        android:layout_width="150dp"
+        android:layout_height="120dp"
+        android:src="@color/venu_flat_color"
+        app:rciv_radius="@dimen/card_corner_radius_4dp"/>
+
+    <TextView
+        android:paddingTop="10dp"
+        android:paddingLeft="10dp"
+        android:id="@+id/live_now_title"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="#WhereItLongNatureProject34"
+        android:textColor="@color/venu_blue"
+        android:textSize="@dimen/app_text_size_medium"
+        android:textStyle="bold" />
+
+    <TextView
+        android:paddingTop="10dp"
+        android:paddingLeft="10dp"
+        android:minLines="3"
+        android:id="@+id/live_now_desc"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Where Long Nautres asads dadsadsa Satha asda "
+        android:textStyle="bold"
+        android:textSize="@dimen/app_text_size_small"/>
+
+</LinearLayout>
+

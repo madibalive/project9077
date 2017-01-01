@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.venu.venutheta">
+
+    <!--
+         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
+         Google Maps Android API v2, but you must specify either coarse or fine
+         location permissions for the 'MyLocation' functionality. 
+    -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <application
+        android:name=".Application"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".LaunchActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+
+
+        <!-- ///////HOCKEYAPP MANIFEST -->
+
+
+        <!-- HOCKEYAPP MANIFEST -->
+
+        <!--/////////////////////////////////////-->
+        <!-- GOOGLE MAPS API////////////////////////////////// -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+        <!--//////////////////////////////////////////////////////////////-->
+        <!-- APPLOZIC MANIFEST -->
+
+        <meta-data
+            android:name="com.applozic.application.key"
+            android:value="@string/application_key" /> <!-- Applozic Application Key -->
+
+        <meta-data
+            android:name="com.applozic.mobicomkit.notification.smallIcon"
+            android:resource="@mipmap/ic_launcher" /> <!-- Launcher white Icon -->
+        <meta-data
+            android:name="main_folder_name"
+            android:value="@string/default_media_location_folder" /> <!-- Attachment Folder Name -->
+
+        <meta-data
+            android:name="activity.open.on.notification"
+            android:value="com.applozic.mobicomkit.uiwidgets.conversation.activity.ConversationActivity" /> <!-- NOTE : Do NOT change this value -->
+
+        <meta-data
+            android:name="com.package.name"
+            android:value="${applicationId}" />
+
+        <activity
+            android:name="com.applozic.mobicomkit.uiwidgets.conversation.activity.ConversationActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/app_name"
+            android:launchMode="singleTask"
+            android:parentActivityName=".LaunchActivity"
+            android:theme="@style/ApplozicTheme">
+
+            <!-- Parent activity meta-data to support API level 7+ -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".LaunchActivity" />
+        </activity>
+        <activity
+            android:name="com.applozic.mobicomkit.uiwidgets.people.activity.MobiComKitPeopleActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/activity_contacts_list"
+            android:parentActivityName="com.applozic.mobicomkit.uiwidgets.conversation.activity.ConversationActivity"
+            android:theme="@style/ApplozicTheme"
+            android:windowSoftInputMode="adjustResize">
+
+            <!-- Parent activity meta-data to support API level 7+ -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.applozic.mobicomkit.uiwidgets.conversation.activity.ConversationActivity" />
+
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable_contacts" />
+        </activity>
+        <activity
+            android:name="com.applozic.mobicomkit.uiwidgets.conversation.activity.FullScreenImageActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="Image"
+            android:parentActivityName="com.applozic.mobicomkit.uiwidgets.conversation.activity.ConversationActivity"
+            android:theme="@style/Applozic_FullScreen_Theme">
+
+            <!-- Parent activity meta-data to support API level 7+ -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.applozic.mobicomkit.uiwidgets.conversation.activity.ConversationActivity" />
+        </activity>
+        <activity
+            android:name="com.applozic.mobicomkit.uiwidgets.conversation.activity.ContactSelectionActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:launchMode="singleTop"
+            android:parentActivityName="com.applozic.mobicomkit.uiwidgets.conversation.activity.ConversationActivity"
+            android:theme="@style/ApplozicTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.applozic.mobicomkit.uiwidgets.conversation.activity.ConversationActivity" />
+        </activity>
+        <activity
+            android:name="com.applozic.mobicomkit.uiwidgets.conversation.activity.ChannelCreateActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:launchMode="singleTop"
+            android:parentActivityName="com.applozic.mobicomkit.uiwidgets.conversation.activity.ConversationActivity"
+            android:theme="@style/ApplozicTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.applozic.mobicomkit.uiwidgets.conversation.activity.ConversationActivity" />
+        </activity>
+        <activity
+            android:name="com.applozic.mobicomkit.uiwidgets.conversation.activity.ChannelNameActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:launchMode="singleTop"
+            android:parentActivityName="com.applozic.mobicomkit.uiwidgets.conversation.activity.ConversationActivity"
+            android:theme="@style/ApplozicTheme" />
+        <activity
+            android:name="com.applozic.mobicomkit.uiwidgets.conversation.activity.ChannelInfoActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:launchMode="singleTop"
+            android:parentActivityName="com.applozic.mobicomkit.uiwidgets.conversation.activity.ConversationActivity"
+            android:theme="@style/ApplozicTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.applozic.mobicomkit.uiwidgets.conversation.activity.ConversationActivity" />
+        </activity>
+        <activity
+            android:name="com.applozic.mobicomkit.uiwidgets.conversation.activity.MobiComAttachmentSelectorActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:launchMode="singleTop"
+            android:parentActivityName="com.applozic.mobicomkit.uiwidgets.conversation.activity.ConversationActivity"
+            android:theme="@style/ApplozicTheme"
+            android:windowSoftInputMode="stateHidden|adjustResize">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.applozic.mobicomkit.uiwidgets.conversation.activity.ConversationActivity" />
+        </activity>
+        <activity
+            android:name="com.applozic.mobicomkit.uiwidgets.conversation.activity.MobicomLocationActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:parentActivityName="com.applozic.mobicomkit.uiwidgets.conversation.activity.ConversationActivity"
+            android:theme="@style/ApplozicTheme"
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name="com.soundcloud.android.crop.CropImageActivity" />
+
+        <service
+            android:name="com.applozic.mobicomkit.api.conversation.MessageIntentService"
+            android:exported="false" />
+        <service android:name="org.eclipse.paho.android.service.MqttService" />
+        <service
+            android:name="com.applozic.mobicomkit.api.conversation.ApplozicIntentService"
+            android:exported="false" />
+        <service
+            android:name="com.applozic.mobicomkit.api.conversation.ApplozicMqttIntentService"
+            android:exported="false" />
+        <service
+            android:name="com.applozic.mobicomkit.api.people.UserIntentService"
+            android:exported="false" />
+        <service
+            android:name="com.applozic.mobicomkit.api.conversation.ConversationIntentService"
+            android:exported="false" />
+        <service
+            android:name="com.applozic.mobicomkit.api.conversation.ConversationReadService"
+            android:exported="false" />
+
+        <receiver android:name="com.applozic.mobicomkit.broadcast.TimeChangeBroadcastReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.TIME_SET" />
+                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.applozic.mobicomkit.broadcast.ConnectivityReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.applozic.mobicomkit.uiwidgets.notification.MTNotificationBroadcastReceiver">
+            <intent-filter>
+                <action android:name="${applicationId}.send.notification" />
+            </intent-filter>
+        </receiver>
+
+        <!-- ///////////////////////////////////////////-->
+        <!-- END  APPLOZIC MANIFEST -->
+
+
+
+
+        <!-- VENU ACTIVTTIES -->
+        <!-- ///////////////////////////////////////////-->
+
+        <service
+            android:name=".services.GeneralService"
+            android:exported="false" />
+        <service
+            android:name=".services.UploadService"
+            android:exported="false" />
+
+        <receiver android:name=".services.ConnectivityChangeReceiver">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+
+
+        <!-- ///////////////////////////////////////////-->
+        <!-- SERVICES -->
+
+        <!-- AUTH DATA  -->
+        <!-- ///////////////////////////////////////////-->
+
+        <activity
+            android:name=".auth.LoginActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".auth.OnboardUsersActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".auth.SignUpActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name=".auth.PendingInvitesActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <!-- AUTH DATA  -->
+        <!-- ///////////////////////////////////////////-->
+
+
+        <!-- NAV BAR  //////////////////////////////////-->
+        <!-- ///////////////////////////////////////////-->
+
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/title_activity_main"
+            android:launchMode="singleTask"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".eventmanager.EventManagerActivity"
+            android:label="@string/title_activity_event_manger"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.venu.venutheta.MainActivity" />
+        </activity>
+        <activity
+            android:name=".notification.NotificationActivity"
+            android:label="@string/title_activity_notification"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.venu.venutheta.MainActivity" />
+        </activity>
+        <activity
+            android:name=".contacts.ContactActivity"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            android:label="@string/title_activity_contact">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.venu.venutheta.MainActivity" />
+        </activity>
+        <activity
+            android:name=".ontap.OnTapActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.venu.venutheta.MainActivity" />
+        </activity>
+        <activity
+            android:name=".settings.SettingsActivity"
+            android:label="@string/title_activity_settings"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.venu.venutheta.MainActivity" />
+        </activity>
+        <activity
+            android:name=".Discover.SearchActivity"
+            android:label="@string/title_activity_search">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.venu.venutheta.MainActivity" />
+        </activity>
+
+        <activity
+            android:name=".Discover.DiscoverMainActivity"
+            android:label="@string/title_activity_search">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.venu.venutheta.MainActivity" />
+        </activity>
+
+
+        <activity
+            android:name=".Discover.CategoryActivity"
+            android:label="@string/title_activity_expanded_category"
+            android:launchMode="singleTask"
+            android:parentActivityName=".Discover.DiscoverActivty"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.venu.venutheta.Discover.DiscoverActivty" />
+        </activity>
+        <!-- ///////////////////////////////////////////-->
+        <!-- END NAV BAR ///////////////////////////////// -->
+
+
+        <!-- POST ACTIVITIES /////////////////// -->
+        <!-- ///////////////////////////////////////////-->
+
+        <activity
+            android:name=".post.PostEventActivity"
+            android:label="@string/title_activity_event_post"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".post.PostMediaActivity"
+            android:label="@string/title_activity_media_post"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- ///////////////////////////////////////////-->
+        <!-- END POST ACTIVITIES  /////////////  -->
+
+
+
+        <!-- MAP ACTIVITES -->
+        <!-- ///////////////////////////////////////////-->
+
+        <activity
+            android:name=".map.MapEventsActivity"
+            android:label="@string/title_activity_map_events">
+
+        </activity>
+
+        <activity
+            android:name=".map.MapEnterLocationActivity"
+            android:label="@string/title_activity_map_events">
+
+        </activity>
+        <!-- ///////////////////////////////////////////-->
+        <!-- END MAP ACTIVITES -->
+
+
+        <!-- VIEW AND PAGERS  -->
+        <!-- ///////////////////////////////////////////-->
+
+        <activity
+            android:name=".gallery.GalleryActivity"
+            android:label="@string/title_activity_gallery"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".gallery.PhotoHolderActivity"
+            android:label="@string/title_activity_photo_view"
+            android:theme="@style/AppThemeDark.NoActionBar" />
+        <activity
+            android:name=".gallery.VideoHolderActivity"
+            android:label="@string/title_activity_video"
+            android:theme="@style/AppThemeDark.NoActionBar" />
+        <activity
+            android:name=".gallery.GalleryPagerActivity"
+            android:label="@string/title_activity_gallery_slide"
+            android:theme="@style/AppThemeDark.NoActionBar" />
+
+        <!-- ///////////////////////////////////////////-->
+        <!-- END VIEW AND PAGERS  -->
+
+
+
+        <!-- PROFILES ACTIVITY-->
+        <!-- ///////////////////////////////////////////-->
+        <activity
+            android:name=".profile.UserPageActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name=".eventpage.EventPageActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+
+    </application>
+
+</manifest>

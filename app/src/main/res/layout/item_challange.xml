@@ -1,0 +1,55 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/background_light"
+    android:minHeight="?android:listPreferredItemHeight"
+    android:gravity="center_vertical"
+    android:padding="@dimen/padding_normal">
+
+    <TextView
+        android:layout_alignParentLeft="true"
+        android:id="@+id/challange_pos"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="15dp"
+        android:text="1"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textStyle="bold" />
+
+    <com.android.liuzhuang.rcimageview.CircleImageView
+        android:layout_toRightOf="@id/challange_pos"
+        android:id="@+id/challange_avatar"
+        android:layout_width="48dp"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/dp_10"
+        android:layout_height="48dp"
+        android:src="@color/venu_flat_color"
+        />
+
+
+    <TextView
+        android:layout_toRightOf="@id/challange_avatar"
+        android:text="Name"
+        android:id="@+id/challange_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:textColor="@android:color/black"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_toRightOf="@id/challange_avatar"
+        android:layout_below="@id/challange_name"
+        android:text="12m likes"
+        android:id="@+id/challange_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+
+
+</RelativeLayout>
+

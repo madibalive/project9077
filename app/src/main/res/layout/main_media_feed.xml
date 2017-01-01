@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+    <com.android.liuzhuang.rcimageview.RoundCornerImageView
+        android:id="@+id/f_avatar"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:src="@color/venu_flat_color"
+        />
+
+    <TextView
+        android:id="@+id/f_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/f_avatar"
+        android:layout_toEndOf="@+id/f_avatar"
+        android:layout_toRightOf="@+id/f_avatar"
+        android:text="Kofi"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:textSize="13sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/f_time_ago"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/f_name"
+        android:layout_toRightOf="@id/f_name"
+        android:text=" - timeagao"
+        android:textSize="11sp" />
+
+    <com.example.madiba.venu_alpha.ui.HashTagTextView
+        android:id="@+id/f_hashtag"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/f_avatar"
+        android:paddingBottom="8dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="2dp"
+        android:text="#hsasjtasd The technologoical revolution  reqred is quite far off,"
+        android:textColor="@color/text_black"
+        android:textSize="15sp" />
+
+
+    <ImageButton
+        android:id="@+id/f_shared"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/f_overflow_ic"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/dp_4"
+        android:layout_toLeftOf="@id/f_overflow_ic"
+        android:background="@android:color/transparent"
+        android:src="@drawable/ic_shared_default"
+        android:visibility="visible"
+        />
+
+    <ImageButton
+        android:id="@+id/f_overflow_ic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@id/f_name"
+        android:background="@android:color/transparent"
+        android:src="@drawable/ic_overflow" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="410dp"
+        android:layout_below="@id/f_hashtag"
+        android:visibility="visible">
+
+        <ImageView
+            android:id="@+id/f10_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@color/venu_flat_color"
+            />
+
+        <ImageButton
+            android:id="@+id/f_video_thumb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_play" />
+
+
+        <TextView
+            android:id="@+id/f_like"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="22dp"
+            android:layout_marginRight="22dp"
+            android:drawableLeft="@drawable/ic_heart"
+            android:drawablePadding="@dimen/dp_4"
+            android:gravity="center_vertical"
+            android:text="12"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/f_comment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="8dp"
+            android:layout_toRightOf="@id/f_like"
+            android:drawableLeft="@drawable/ic_chat_2"
+            android:drawablePadding="@dimen/dp_4"
+            android:gravity="center_vertical"
+            android:text="12"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:background="@android:color/transparent"
+            android:id="@+id/f_share"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="8dp"
+            android:layout_marginRight="@dimen/dp_22"
+            android:src="@drawable/ic_return"
+            android:drawablePadding="@dimen/dp_4"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <com.wonderkiln.blurkit.BlurLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true" />
+
+    </RelativeLayout>
+
+</RelativeLayout>
