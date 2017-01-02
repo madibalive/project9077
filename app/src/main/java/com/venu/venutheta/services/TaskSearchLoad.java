@@ -3,6 +3,7 @@ package com.venu.venutheta.services;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
+import com.venu.venutheta.models.GlobalConstants;
 import com.venu.venutheta.models.SearchModel;
 
 import java.util.ArrayList;

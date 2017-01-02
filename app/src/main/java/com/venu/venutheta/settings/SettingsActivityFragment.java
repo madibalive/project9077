@@ -111,6 +111,7 @@ public class SettingsActivityFragment extends Fragment implements EasyPermission
     }
 
     private void initDataView() {
+
         Glide.with(getActivity())
                 .load(mCurrentUser.getParseFile("avatar_small").getUrl())
                 .crossFade()
@@ -121,6 +122,7 @@ public class SettingsActivityFragment extends Fragment implements EasyPermission
                 .fallback(R.drawable.ic_default_avatar)
                 .thumbnail(0.4f)
                 .into(avatar);
+
     }
 
     private void initView(View view) {
@@ -142,6 +144,7 @@ public class SettingsActivityFragment extends Fragment implements EasyPermission
     }
 
     private void changePassword(){
+
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
         final View dialogView = inflater.inflate(R.layout.dailog_settings, null);
@@ -168,6 +171,7 @@ public class SettingsActivityFragment extends Fragment implements EasyPermission
         b.show();
 
     }
+
     private void changeUsername(){
 
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getActivity());
@@ -178,6 +182,7 @@ public class SettingsActivityFragment extends Fragment implements EasyPermission
         edt.setHint(ParseUser.getCurrentUser().getUsername());
         dialogBuilder.setTitle("Change Username");
         dialogBuilder.setMessage("Enter username below");
+
         dialogBuilder.setPositiveButton("Done", (dialog, whichButton) -> {
             String newUsername = edt.getText().toString();
             if (newUsername.length() > 0) {
@@ -185,16 +190,20 @@ public class SettingsActivityFragment extends Fragment implements EasyPermission
                 ParseUser.getCurrentUser().setUsername(newUsername);
                 ParseUser.getCurrentUser().saveInBackground(e -> {
                     if (e == null){
+
                         Toast.makeText(getActivity(),"Username Updated",Toast.LENGTH_SHORT).show();
+
                     }else {
                         Timber.e("error updateing user %s",e.getMessage());
                     }
                 });
             }
         });
+
         dialogBuilder.setNegativeButton("Cancel", (dialog, whichButton) -> {
-            //pass
+
         });
+
         AlertDialog b = dialogBuilder.create();
         b.show();
 
@@ -210,6 +219,7 @@ public class SettingsActivityFragment extends Fragment implements EasyPermission
                     RC_CAMERA_PERM, perms);
         }
     }
+
     private void chooser(){
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle("Choose Image Source");
@@ -232,7 +242,9 @@ public class SettingsActivityFragment extends Fragment implements EasyPermission
                 }).show();
     }
 
+
     private void updateDp(final String mUrl){
+
         Task.callInBackground(() -> {
 
             Bitmap image = BitmapFactory.decodeFile(mUrl);
@@ -270,6 +282,7 @@ public class SettingsActivityFragment extends Fragment implements EasyPermission
                 return null;
             }
         }, Task.UI_THREAD_EXECUTOR);
+
     }
 
 
@@ -305,11 +318,13 @@ public class SettingsActivityFragment extends Fragment implements EasyPermission
             }
         }
     }
+
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this);
     }
+
     @Override
     public void onPermissionsGranted(int requestCode, List<String> perms) {
 
@@ -319,4 +334,5 @@ public class SettingsActivityFragment extends Fragment implements EasyPermission
     public void onPermissionsDenied(int requestCode, List<String> perms) {
 
     }
+
 }

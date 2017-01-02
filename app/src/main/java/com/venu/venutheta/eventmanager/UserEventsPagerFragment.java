@@ -191,7 +191,7 @@ public class UserEventsPagerFragment extends Fragment implements SwipeRefreshLay
 
         @Override
         public Fragment getItem(int position) {
-
+            return null;
         }
 
         @Override

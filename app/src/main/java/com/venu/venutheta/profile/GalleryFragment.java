@@ -35,6 +35,7 @@ import timber.log.Timber;
 
 public class GalleryFragment extends Fragment implements BaseQuickAdapter.RequestLoadMoreListener {
 
+    private static final int RC_CAMERA_PERM = 123;
     private RecyclerView mRecyclerview;
     private EventsAdapter mAdapter;
     private List<ParseObject> mDatas=new ArrayList<>();
@@ -45,8 +46,11 @@ public class GalleryFragment extends Fragment implements BaseQuickAdapter.Reques
     private  RxLoaderManager loaderManager;
     private RxLoader<List<ParseObject>> listRxLoader;
 
+
     public GalleryFragment() {
+
     }
+
 
     public static GalleryFragment newInstance() {
         return new GalleryFragment();
@@ -116,6 +120,7 @@ public class GalleryFragment extends Fragment implements BaseQuickAdapter.Reques
 
 
     }
+
     private void initAdapter(){
         mAdapter=new EventsAdapter(R.layout.item_ontap,mDatas);
         mAdapter.setOnLoadMoreListener(this);

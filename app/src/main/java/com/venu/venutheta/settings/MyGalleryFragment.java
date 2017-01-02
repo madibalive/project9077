@@ -1,5 +1,6 @@
 package com.venu.venutheta.settings;
 
+
 import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -10,16 +11,16 @@ import android.os.Handler;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,17 +34,14 @@ import com.parse.ParseObject;
 import com.parse.ParseUser;
 import com.venu.venutheta.R;
 import com.venu.venutheta.adapter.SingletonDataSource;
-import com.venu.venutheta.modal.RequestFragment;
+import com.venu.venutheta.mainfragment.LoaderMainFragment;
 import com.venu.venutheta.navtransitions.NavigateTo;
-import com.venu.venutheta.profile.ProfileLoader;
 import com.venu.venutheta.ui.StateButton;
 import com.venu.venutheta.utils.ImageUitls;
 import com.venu.venutheta.utils.NetUtils;
-import com.venu.venutheta.utils.TimeUitls;
 
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import bolts.Continuation;
@@ -59,27 +57,25 @@ import timber.log.Timber;
 import static android.app.Activity.RESULT_OK;
 
 
-public class MyGalleryFragment extends Fragment implements BaseQuickAdapter.RequestLoadMoreListener {
-
+public class MyGalleryFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener,BaseQuickAdapter.RequestLoadMoreListener,EasyPermissions.PermissionCallbacks {
 
     private static final int CAMERA_REQUEST_CODE = 100;
     private static final int GALLERY_REQUEST_CODE = 300;
     private static final int RC_CAMERA_PERM = 123;
-    private RecyclerView mRecyclerview;
-    private EventsAdapter mAdapter;
-    private List<ParseObject> mDatas=new ArrayList<>();
-    private Date lastSince;
-    private int skip=0;
-    private String mId,mClassName;
-    private Boolean isLoading=false;
-    private  RxLoaderManager loaderManager;
+    private List<ParseObject>   mDatas = new ArrayList<>();
+    private RecyclerView mRecyclerView;
+    private ChallangesAdapter mAdapter;
+    private SwipeRefreshLayout mSwipeRefreshLayout;
+    private StateButton globalBtn,localBtn;
+    private View headView;
+    private TextView mHashtag,mTitle,mDesc;
+    private ImageView mImage;
+    private ProgressDialog progressDialog;
     private RxLoader<List<ParseObject>> listRxLoader;
+    private RoundCornerImageView avatar;
+    private TextView name, peeps, followers, following;
+    private RxLoaderManager loaderManager;
 
-    ProgressDialog progressDialog;
-
-    private RoundCornerImageView mAavtar;
-    private TextView mName,mFollowersCount,mFollowingCount,mEventsCount,mPeepCount;
-    private StateButton actionBtn;
     public MyGalleryFragment() {
     }
 
@@ -88,18 +84,81 @@ public class MyGalleryFragment extends Fragment implements BaseQuickAdapter.Requ
     }
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        lastSince = TimeUitls.getCurrentDate();
-        mId = ParseUser.getCurrentUser().getObjectId();
+        loaderManager = RxLoaderManagerCompat.get(this);
 
-        listRxLoader = loaderManager.create(
-                ProfileLoader.loadGallery(mId,"_User",skip,lastSince),
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+
+        View view= inflater.inflate(R.layout.container_core, container, false);
+        headView = inflater.inflate(R.layout.header_challange, container, false);
+        mTitle = (TextView) headView.findViewById(R.id.title);
+        mDesc = (TextView) headView.findViewById(R.id.desc);
+        mImage = (ImageView) headView.findViewById(R.id.image);
+        globalBtn = (StateButton) headView.findViewById(R.id.ch_view_Global);
+        localBtn = (StateButton) headView.findViewById(R.id.ch_view_Friends);
+        localBtn.setRadius(new float[]{60, 60, 0, 0, 0, 0, 60, 60});
+        globalBtn.setRadius(new float[]{0, 0, 60, 60, 60, 60, 0, 0});
+        mRecyclerView = (RecyclerView) view.findViewById(R.id.core_recyclerview);
+        mSwipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.core_swipelayout);
+        mSwipeRefreshLayout.setOnRefreshListener(this);
+
+        avatar = (RoundCornerImageView) view.findViewById(R.id.account_avatar);
+        name = (TextView) view.findViewById(R.id.account_followers_cnt);
+        peeps = (TextView) view.findViewById(R.id.account_peeps_cnt);
+        following = (TextView) view.findViewById(R.id.account_following_cnt);
+        followers = (TextView) view.findViewById(R.id.account_name);
+
+        return view;
+
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        initAdapter();
+        initload();
+    }
+
+
+    @Override
+    public void onRefresh() {
+
+        if (NetUtils.hasInternetConnection(getActivity().getApplicationContext())){
+            listRxLoader.restart();
+        }else
+            mSwipeRefreshLayout.setRefreshing(false);
+
+    }
+
+    @Override
+    public void onLoadMoreRequested() {
+
+    }
+
+    private void setUpHeader(){
+        avatar.setOnClickListener(view -> {
+            if (NetUtils.hasInternetConnection(getActivity().getApplicationContext())){
+                changeProfilePicture();
+            }
+        });
+
+
+    }
+
+    private void initload(){
+        listRxLoader =loaderManager.create(
+                LoaderMainFragment.LoadChallange(true),
                 new RxLoaderObserver<List<ParseObject>>() {
                     @Override
                     public void onNext(List<ParseObject> value) {
                         Timber.d("onnext");
                         new Handler().postDelayed(() -> {
+                            mSwipeRefreshLayout.setRefreshing(false);
                             if (value.size()>0)
                                 mAdapter.setNewData(value);
                         },500);
@@ -108,113 +167,98 @@ public class MyGalleryFragment extends Fragment implements BaseQuickAdapter.Requ
                     @Override
                     public void onStarted() {
                         Timber.d("stated");
-                        isLoading=true;
                         super.onStarted();
                     }
 
                     @Override
                     public void onError(Throwable e) {
                         Timber.d("stated error %s",e.getMessage());
-                        isLoading=true;
                         super.onError(e);
+                        mSwipeRefreshLayout.setRefreshing(false);
 
                     }
 
                     @Override
                     public void onCompleted() {
                         Timber.d("completed");
-                        isLoading=false;
                         super.onCompleted();
                     }
                 }
 
         );
-
-
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View view=inflater.inflate(R.layout.container_recycler, container, false);
-        FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fab);
 
-        mRecyclerview = (RecyclerView) view.findViewById(R.id.core_recyclerview);
-        mName = (TextView) view.findViewById(R.id.user_prof_name);
-        mFollowersCount = (TextView) view.findViewById(R.id.user_prof_follower);
-        mFollowingCount = (TextView) view.findViewById(R.id.user_prof_following);
-        mEventsCount = (TextView) view.findViewById(R.id.user_prof_events);
-        mPeepCount = (TextView) view.findViewById(R.id.user_prof_peeps);
-        mAavtar = (RoundCornerImageView) view.findViewById(R.id.user_prof_image);
+    private void initAdapter(){
 
-        fab.setOnClickListener(view1 -> openRequest());
-        return view;
-    }
+        mAdapter = new ChallangesAdapter(R.layout.item_challange, mDatas);
 
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        loaderManager = RxLoaderManagerCompat.get(this);
-        initAdapter();
+//        challange_viewer.setOnClickListener(view1 -> {
+//            DialogFragment challangeViewDailog = new ChallangeInformationDialog();
+//            challangeViewDailog.show(getChildFragmentManager(), "private");
+//        });
 
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        mRecyclerView.addItemDecoration(new DividerItemDecoration(getContext(), LinearLayoutManager.VERTICAL));
+        mAdapter.setOnRecyclerViewItemClickListener((view, i) -> {
+            onClick(i);
+        });
 
-    }
-
-    private void initView(){
-        mName.setText(ParseUser.getCurrentUser().getUsername());
-
-        // TODO: 1/1/2017 include progress view  
-        mName.setOnClickListener(view -> changeUsername());
-        mAavtar.setOnClickListener(view -> changeProfilePicture());
-        mFollowersCount.setText(String.valueOf(ParseUser.getCurrentUser().getInt("followers")));
-        mFollowingCount.setText(String.valueOf(ParseUser.getCurrentUser().getInt("following")));
-        mEventsCount.setText(String.valueOf(ParseUser.getCurrentUser().getInt("peeps")));
-        mPeepCount.setText(String.valueOf(ParseUser.getCurrentUser().getInt(GlobalConstants.CLASS_EVENT)));
-
-        Glide.with(getActivity())
-                .load(ParseUser.getCurrentUser().getString("avatar"))
-                .crossFade()
-                .placeholder(R.drawable.ic_default_avatar)
-                .error(R.drawable.placeholder_error_media)
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .centerCrop()
-                .fallback(R.drawable.ic_default_avatar)
-                .thumbnail(0.4f)
-                .into(mAavtar);
-    }
-    
-    
-    private void changeUsername(){
-
-        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getActivity());
-        LayoutInflater inflater = getActivity().getLayoutInflater();
-        final View dialogView = inflater.inflate(R.layout.dailog_settings, null);
-        dialogBuilder.setView(dialogView);
-        final EditText edt = (EditText) dialogView.findViewById(R.id.edit1);
-        edt.setHint(ParseUser.getCurrentUser().getUsername());
-        dialogBuilder.setTitle("Change Username");
-        dialogBuilder.setMessage("Enter username below");
-        dialogBuilder.setPositiveButton("Done", (dialog, whichButton) -> {
-            String newUsername = edt.getText().toString();
-            if (newUsername.length() > 0) {
-                username.setText(newUsername);
-                ParseUser.getCurrentUser().setUsername(newUsername);
-                ParseUser.getCurrentUser().saveInBackground(e -> {
-                    if (e == null){
-                        Toast.makeText(getActivity(),"Username Updated",Toast.LENGTH_SHORT).show();
-                    }else {
-                        Timber.e("error updateing user %s",e.getMessage());
-                    }
-                });
+        mAdapter.setOnRecyclerViewItemChildClickListener((adapter, view, position) -> {
+            switch (view.getId()) {
+                case R.id.challange_avatar:
+                    onAvatarClick(position);
+                    break;
             }
         });
-        dialogBuilder.setNegativeButton("Cancel", (dialog, whichButton) -> {
-            //pass
-        });
-        AlertDialog b = dialogBuilder.create();
-        b.show();
 
+        mAdapter.addHeaderView(headView);
+        mRecyclerView.setAdapter(mAdapter);
     }
+
+    private void onAvatarClick(int pos){
+        SingletonDataSource.getInstance().setCurrentUser(mAdapter.getItem(pos).getParseUser("from"));
+        NavigateTo.goToUserPage(getActivity(),mAdapter.getItem(pos).getParseUser("from").getObjectId());
+    }
+    private void onClick(int pos){
+        SingletonDataSource.getInstance().setgalleryPagerData(mDatas);
+        NavigateTo.goToGalleryPager(getActivity(),pos,1,"","");
+    }
+
+
+    private class ChallangesAdapter extends BaseQuickAdapter<ParseObject> {
+
+        ChallangesAdapter(int layoutResId, List<ParseObject> data) {
+            super(layoutResId, data);
+            setHasStableIds(true);
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return super.getItemId(position);
+        }
+
+        @Override
+        public void onBindViewHolder(RecyclerView.ViewHolder holder, int position, List<Object> payloads) {
+            super.onBindViewHolder(holder, position, payloads);
+        }
+
+        @Override
+        protected void convert(BaseViewHolder holder, ParseObject challange) {
+
+            Glide.with(mContext)
+                    .load(challange.getParseUser("from").getParseFile("avatar"))
+                    .thumbnail(0.4f)
+                    .placeholder(R.drawable.ic_default_avatar)
+                    .error(R.drawable.placeholder_error_media)
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .centerCrop()
+                    .fallback(R.drawable.ic_default_avatar)
+                    .crossFade()
+                    .into((ImageView) holder.getView(R.id.challange_avatar));
+        }
+    }
+
 
     @AfterPermissionGranted(RC_CAMERA_PERM)
     private void changeProfilePicture(){
@@ -226,6 +270,7 @@ public class MyGalleryFragment extends Fragment implements BaseQuickAdapter.Requ
                     RC_CAMERA_PERM, perms);
         }
     }
+
     private void chooser(){
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle("Choose Image Source");
@@ -249,6 +294,7 @@ public class MyGalleryFragment extends Fragment implements BaseQuickAdapter.Requ
     }
 
     private void updateDp(final String mUrl){
+
         Task.callInBackground(() -> {
 
             Bitmap image = BitmapFactory.decodeFile(mUrl);
@@ -286,61 +332,7 @@ public class MyGalleryFragment extends Fragment implements BaseQuickAdapter.Requ
                 return null;
             }
         }, Task.UI_THREAD_EXECUTOR);
-    }
 
-
-
-    private void initAdapter(){
-        mAdapter=new EventsAdapter(R.layout.item_ontap,mDatas);
-        mAdapter.setOnLoadMoreListener(this);
-        mAdapter.openLoadMore(30,true);
-        mRecyclerview.setLayoutManager(new LinearLayoutManager(getActivity()));
-        mRecyclerview.setHasFixedSize(true);
-        mRecyclerview.setAdapter(mAdapter);
-
-
-        mAdapter.setOnRecyclerViewItemChildClickListener((baseQuickAdapter, view, i) -> {
-            switch (view.getId()){
-                case 1:
-                    SingletonDataSource.getInstance().setCurrentVideo(mAdapter.getItem(i));
-                    NavigateTo.goToVideoViewer(getActivity(),mAdapter.getItem(i).getObjectId(),mAdapter.getItem(i).getClassName());
-                    break;
-                case 2:
-                    NavigateTo.goToGalleryPager(getActivity(),i,1,mId,mClassName);
-                    break;
-                default:
-                    break;
-            }
-        });
-
-    }
-    private void openRequest(){
-        if (NetUtils.hasInternetConnection(getActivity().getApplicationContext()) && !isLoading){
-            DialogFragment requestDialog = new RequestFragment();
-            requestDialog.show(getChildFragmentManager(),"request");
-        }
-    }
-
-    @Override
-    public void onLoadMoreRequested() {
-        if (NetUtils.hasInternetConnection(getActivity().getApplicationContext()) && !isLoading){
-            skip=mAdapter.getData().size();
-            listRxLoader.restart();
-        }
-    }
-
-
-    private class EventsAdapter
-            extends BaseQuickAdapter<ParseObject> {
-
-        public EventsAdapter(int layoutResId, List<ParseObject> data) {
-            super(layoutResId, data);
-        }
-        @Override
-        protected void convert(BaseViewHolder holder, final ParseObject request) {
-            holder.setText(R.id.ot_i_order_item, request.getString("categoryName"));
-//                    .setText(R.id.ot_i_number,request.getString("number"));
-        }
     }
 
 
@@ -381,6 +373,7 @@ public class MyGalleryFragment extends Fragment implements BaseQuickAdapter.Requ
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this);
     }
+
     @Override
     public void onPermissionsGranted(int requestCode, List<String> perms) {
 
@@ -392,19 +385,10 @@ public class MyGalleryFragment extends Fragment implements BaseQuickAdapter.Requ
     }
 
     @Override
-    public void onPause() {
-        super.onPause();
-    }
-
-    @Override
     public void onResume() {
         super.onResume();
         if (NetUtils.hasInternetConnection(getActivity().getApplicationContext())){
-            skip=mAdapter.getData().size();
-            listRxLoader.restart();
+            listRxLoader.start();
         }
     }
-
-
-
 }
