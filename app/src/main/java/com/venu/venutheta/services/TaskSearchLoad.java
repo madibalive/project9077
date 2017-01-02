@@ -36,7 +36,7 @@ public class TaskSearchLoad implements Callable<List<SearchModel>> {
         eventQuery.whereStartsWith("title", searchTerm);
         eventQuery.orderByAscending("shares");
         eventQuery.addAscendingOrder("likes");
-
+//
 
         SearchModel gossips = new SearchModel("Gossip", SearchModel.GOSSIP);
         gossips.setmData(GossipQuery.find());
